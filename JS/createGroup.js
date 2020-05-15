@@ -1,3 +1,5 @@
+
+
 function createNewMember(event) {
     //prevents the page from refreshing and a couple of other things. 
     event.preventDefault();
@@ -60,3 +62,41 @@ function createNewMember(event) {
     }
     teamMembers = [];
   }
+
+  addEventListener("click",function(event){
+    if(event.target.id =="clearMembersBtn"){
+      console.log("Clearing!");
+      window.localStorage.removeItem("teamMembers");
+      renderOnRefresh();
+    }
+    });
+
+    //declare function renderOnRefresh with is a onclick-events to refresh 
+function renderOnRefresh(){
+    addMember();
+    const assignedJobsEl = document.getElementById("outputDiv");
+    let assignedJobs = JSON.parse(window.localStorage.getItem("assignedJobs")) || [];
+    // assignedJobsEl.innerHTML = "<span>Show task assertion</span>";
+    assignedJobsEl.innerHTML ="";
+  
+    for(const assignedJob of assignedJobs){
+        const assignedJobEl = document.createElement("div");
+        let {assignedTask,assignedMember} = assignedJob;
+        assignedJobEl.innerHTML =
+        `
+        <div class="objectDiv">
+            <h4>Asserted Task</h4>
+            <div>
+            <strong>Group member:</strong> ${assignedMember}
+            <br>
+            <strong>Assigned task:</strong> ${assignedTask}
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <input id="removeBtn "type="button" value="Remove">
+        </div>`;
+        assignedJobsEl.appendChild(assignedJobEl);
+        }
+    };
