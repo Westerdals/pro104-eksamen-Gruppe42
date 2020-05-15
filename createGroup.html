@@ -7,7 +7,34 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <div id="memberDiv" class="manageDivs">
+        <h3>Add group member</h3>
+        <form onsubmit = "createNewMember(event)">
+            <div>
+                <label>Name:
+                    <div><input name="name" placeholder="Name of group member"/></div>
+                </label>
+            </div>
+            <br>
+            <div>
+                <label>Age:
+                    <div><input name="age" placeholder="Age"/></div>
+                </label>
+                <br>
+                <input id="memberSubmitBtn" type="submit" class="Btns">
+                <input id="showMembersBtn" type="button" value="Show all members" class="Btns">
+                <input id="clearMembersBtn"type="button" value="Clear members" class="Btns"> 
+            </div>
+        </form>
+
+        <main>
+            <div id="outputDiv">
+            
+            </div>
+        </main>
+        <script src="JS/createGroup.js"></script>
+    </div> 
+
 
 </body>
 </html>
