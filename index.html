@@ -4,10 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="CSS/index.css">
-    <title>Document</title>
+    <title>Index/CreateUser</title>
 </head>
 <body>
-    
+    <form onsubmit = "createNewUser(event)">
+        <div id="createUserDiv">
+            <input id="userNameInput" name="username" type="text" placeholder="username">
+            <input id="passwordInput" name="password" type="password" placeholder="password">
+            <input id="passwordInput_2" name="password_2" type="password" placeholder="repeat password">
+            <input id="submitUserBtn" type="submit">
+
+            <div id="outputDiv"></div>
+
+        </div>
+    </form>
+    <script src="JS/createUser.js"></script>
+    <br>
+    <br>
+    <br>
+    <form onsubmit = "loginUser(event)"> 
+        <div id="loginDiv">
+            <input id="usernameLogin" name="usernameLogin" type="text" placeholder="username">
+            <input id="passwordLogin" name="passwordLogin" type="password" placeholder="password">
+            <input id="submitLogin" type="submit">
+        </div>
+        <script src="JS/loginUser.js"></script>
+    </form>
     
 </body>
 </html>
