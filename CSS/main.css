@@ -4,16 +4,18 @@
 
 #mainDiv {
     position: relative;
+    width: 1336px;
+    height: 5000px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: firebrick;
 }
 
 /* Header / Plant overview */
-header {
-    position: relative;
-}
-
 #circleOverview {
-    width: 95vw;
-    height: 90px;
+    position: absolute;
+    width: 93%;
+    height: 100%;
     left: 0px;
     top: 0px;
     background-color: royalblue;
@@ -21,31 +23,48 @@ header {
 }
 
 #headerDiv {
-    position: fixed;
-    left: 0px;
+    position: fixed; 
+    left: auto;
     top: 0px;
-    width: 100vw;
-    height: 90px;
+    width: 1336px;
+    height: 110px;
     background-color: antiquewhite;
 }
 
 .headerCircles {
     position: relative;
     display: inline-block;
-    margin-left: 20px;
-    margin-top: 10px;
+    left: 10px;
+    top: 8px;
     border: 2px solid red;
-    width: 60px;
-    height: 60px;
+    width: 75px;
+    height: 75px;
     background-color: pink;
     border-radius: 50%;
     overflow: hidden;
+    
 }
 
 /* My plant */
 #myPlantDiv {
-    width: 60px;
-    height: 60px;
+    position: absolute;
+    display: inline-block;
+    width: 7%;
+    height: 100%;
     right: 0px;
-    
+    left: 93%;
+    top: 0px;
+    background-color: rosybrown;
+}
+
+#myPlantCircle {
+    position: absolute;
+    top: 6% ;
+    margin-left: 8%;
+    border: 2px solid red;
+    width: 75px;
+    height: 75px;
+    background-color: pink;
+    border-radius: 50%;
+    overflow: hidden;
 }
