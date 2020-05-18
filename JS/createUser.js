@@ -8,14 +8,35 @@ function createNewUser(event) {
     const username = document.querySelector("[name = 'username']").value;
     const password = document.querySelector("[name = 'password']").value;
     const password_2 = document.querySelector("[name = 'password_2']").value;
-  
+   
     // creates a teamMember from the information.
     const user = { username,password};
     const users = JSON.parse(window.localStorage.getItem("users")) || [];
-      
+    for(user1 of users){
+        if(username === user1.username) {
+          alert("username is taken");
+          return;
+        }else {
+            console.log("username is free ");
+        }
+    }
+
     if(password != password_2) {
         alert("passwords does not match")
     }else{
+      
+      
+    console.log("this is")
+    var passw =   /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
+    if(password.match(passw)) { 
+      alert("Correct, try another...");
+    }
+    else { 
+        alert('Wrong...!')
+        return;
+    }
+
+
         //Pushes the new users into the array so it doesnt erase the previous one. 
         users.push(user);
         window.localStorage.setItem("users", JSON.stringify(users));
