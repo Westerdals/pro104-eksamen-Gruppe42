@@ -1,0 +1,51 @@
+* {
+    margin: 0px 0px 0px 0px;
+}
+
+#mainDiv {
+    position: relative;
+}
+
+/* Header / Plant overview */
+header {
+    position: relative;
+}
+
+#circleOverview {
+    width: 95vw;
+    height: 90px;
+    left: 0px;
+    top: 0px;
+    background-color: royalblue;
+    overflow-x: scroll;
+}
+
+#headerDiv {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100vw;
+    height: 90px;
+    background-color: antiquewhite;
+}
+
+.headerCircles {
+    position: relative;
+    display: inline-block;
+    margin-left: 20px;
+    margin-top: 10px;
+    border: 2px solid red;
+    width: 60px;
+    height: 60px;
+    background-color: pink;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+/* My plant */
+#myPlantDiv {
+    width: 60px;
+    height: 60px;
+    right: 0px;
+    
+}
