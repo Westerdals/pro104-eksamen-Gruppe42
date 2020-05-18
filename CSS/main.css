@@ -8,18 +8,16 @@
     height: 5000px;
     margin-left: auto;
     margin-right: auto;
-    background-color: lightgray;
 }
 
 /* Header / Plant overview */
 #circleOverview {
     position: absolute;
-    width: 93%;
-    height: 100%;
+    height: 110px;
+    width: 92%;
     left: 0px;
     top: 0px;
-    border: 2px solid blue;
-    overflow-x: scroll;
+    border-bottom: 1px solid black;
 }
 
 #headerDiv {
@@ -28,15 +26,19 @@
     top: 0px;
     width: 1336px;
     height: 110px;
-    background-color: antiquewhite;
+
 }
 
+.circleDiv {
+    position: relative;
+    display: inline-block;
+}
 .headerCircles {
     position: relative;
     display: inline-block;
     left: 10px;
     margin-right: 15px;
-    top: 8px;
+    top: 7px;
     border: 2px solid red;
     width: 75px;
     height: 75px;
@@ -55,7 +57,10 @@
     font-size: 14px;
     font-weight: 200;
     top: 90px;
+    left: 4px;
+    z-index: 1;
 }
+
 
 #newMemberC {
     position: relative;
@@ -63,37 +68,44 @@
     left: 10px;
     margin-right: 15px;
     top: 8px;
-    border: 5px solid gray;
-    width: 73px;
-    height: 73px;
-    background-color: lightgray;
+    border: 2px solid #b6b6b6;
+    width: 75px;
+    height: 75px;
+    background-color: #eeeeee;
     border-radius: 50%;
     overflow: hidden;
+}
+
+#plusIco {
+    position: absolute;
+    top: 16px;
+    left: 28px;
+    font-size: 30px;
+    color: #b6b6b6;
+    font-weight: 300;
 }
 
 /* My plant */
 #myPlantDiv {
     position: absolute;
     display: inline-block;
-    width: 7%;
+    width: 8%;
     height: 100%;
     right: 0px;
-    left: 93%;
+    left: 92%;
     top: 0px;
     background-color: rosybrown;
+    border-bottom: 1px solid black;
 }
 
 #myPlantCircle {
     position: absolute;
     top: 6% ;
-    margin-left: 8%;
+    margin-left: 12%;
     border: 2px solid red;
     width: 75px;
     height: 75px;
     background-color: pink;
     border-radius: 50%;
     overflow: hidden;
-}
-
-#myPlantTxt {
 }
