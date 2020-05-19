@@ -17,7 +17,7 @@ function createNewUser(event) {
           alert("username is taken");
           return;
         }else {
-            console.log("username is free ");
+            console.log("username is available ");
         }
     }
 
