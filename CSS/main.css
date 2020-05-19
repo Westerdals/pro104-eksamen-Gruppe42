@@ -11,13 +11,24 @@
 }
 
 /* Header / Plant overview */
+#newMemberDiv {
+    position: fixed; 
+    left: auto;
+    top: 0px;
+    width: 8%;
+    height: 110px;
+    border-bottom: 1px solid black;
+}
+
 #circleOverview {
     position: absolute;
     height: 110px;
-    width: 92%;
-    left: 0px;
+    width: 84%;
+    left: 8%;
     top: 0px;
     border-bottom: 1px solid black;
+    overflow-x: scroll;
+    white-space: nowrap;
 }
 
 #headerDiv {
@@ -26,7 +37,6 @@
     top: 0px;
     width: 1336px;
     height: 110px;
-
 }
 
 .circleDiv {
@@ -94,8 +104,8 @@
     right: 0px;
     left: 92%;
     top: 0px;
-    background-color: rosybrown;
     border-bottom: 1px solid black;
+    border-left: 1px solid black;
 }
 
 #myPlantCircle {
