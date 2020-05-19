@@ -17,7 +17,8 @@
     top: 0px;
     width: 8%;
     height: 110px;
-    border-bottom: 1px solid black;
+    border-bottom: 3px solid rgb(210, 210, 210);
+    background-color: white;
 }
 
 #circleOverview {
@@ -26,9 +27,10 @@
     width: 84%;
     left: 8%;
     top: 0px;
-    border-bottom: 1px solid black;
+    border-bottom: 3px solid rgb(210, 210, 210);
     overflow-x: scroll;
     white-space: nowrap;
+    background-color: white;
 }
 
 #headerDiv {
@@ -52,6 +54,7 @@
     width: 75px;
     height: 75px;
     border-radius: 50%;
+    border: 2px solid red;
     overflow: hidden;
     
 }
@@ -107,18 +110,62 @@
     right: 0px;
     left: 92%;
     top: 0px;
-    border-bottom: 1px solid black;
-    border-left: 1px solid black;
+    border-bottom: 3px solid rgb(210, 210, 210);
+    border-left: 1px solid rgb(210, 210, 210);
+    background-color: rgb(244, 244, 244);
 }
 
 #myPlantCircle {
     position: absolute;
     top: 6% ;
     margin-left: 12%;
-    border: 2px solid red;
+    border: 2px solid #68c959;
     width: 75px;
     height: 75px;
-    background-color: pink;
     border-radius: 50%;
     overflow: hidden;
+    background-color: white;
+}
+
+#bodyDiv {
+    position: absolute;
+    width: 1336px;
+    height: 1000px;
+    margin-top: 113px;
+    display: grid;
+
+}
+
+#quoteDiv {
+    position: absolute;
+    width: 900px;
+    height: 30px;
+    left: 5px;
+    top: 10px;
+}
+#progressBoard {
+    width: 900px;
+}
+
+.progressColumns {
+    position: absolute;
+    margin-top: 60px;
+    margin-left: 20px;
+    margin-right: 5px;
+    width: 265px;
+    height: 500px;
+    background-color: #b6ccbb;
+    display: inline-block;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    white-space: nowrap;
+    color: gray;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    font-weight: bold;
+    padding-top: 15px;
+    border-radius: 20px;
+    border-right: 5px solid #99ad9d;
+    border-bottom: 5px solid #99ad9d;
+    z-index: -2;
 }
