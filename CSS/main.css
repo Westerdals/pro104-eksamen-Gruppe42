@@ -69,6 +69,8 @@
     top: 90px;
     left: 4px;
     z-index: 1;
+    overflow-x: hidden;
+    white-space: nowrap;
 }
 
 
@@ -84,7 +86,10 @@
     background-color: #eeeeee;
     border-radius: 50%;
     overflow: hidden;
+    cursor: pointer;
 }
+
+
 
 #plusIco {
     position: absolute;
