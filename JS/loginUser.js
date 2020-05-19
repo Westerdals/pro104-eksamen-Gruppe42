@@ -4,10 +4,15 @@ function loginUser(event) {
 
     const users = JSON.parse(window.localStorage.getItem("users"));
 
+    function redirectToMain() {
+        location.href = "main.html";
+    }
+
     for(const user of users){
         if(username === user.username) {
             if(password === user.password){
                 alert("login succeeded");
+                redirectToMain();
             }else{
                 alert("incorrect username or password, please try again.");
             }

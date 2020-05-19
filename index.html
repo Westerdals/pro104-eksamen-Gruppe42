@@ -9,10 +9,14 @@
 <body>
     <form onsubmit = "createNewUser(event)">
         <div id="createUserDiv">
+            <h4>Register new user</h4>
             <input id="userNameInput" name="username" type="text" placeholder="username">
             <input id="passwordInput" name="password" type="password" placeholder="password">
             <input id="passwordInput_2" name="password_2" type="password" placeholder="repeat password">
             <input id="submitUserBtn" type="submit">
+            <a href="login.html">
+                <p>Already registered? Log in here</p>
+            </a>
 
             <div id="outputDiv"></div>
 
@@ -22,14 +26,6 @@
     <br>
     <br>
     <br>
-    <form onsubmit = "loginUser(event)"> 
-        <div id="loginDiv">
-            <input id="usernameLogin" name="usernameLogin" type="text" placeholder="username">
-            <input id="passwordLogin" name="passwordLogin" type="password" placeholder="password">
-            <input id="submitLogin" type="submit">
-        </div>
-        <script src="JS/loginUser.js"></script>
-    </form>
     
 </body>
 </html>
