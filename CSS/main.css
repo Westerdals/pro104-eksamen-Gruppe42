@@ -9,7 +9,7 @@ h1 {
 #mainDiv {
     position: relative;
     width: 1336px;
-    height: 5000px;
+    height: 700px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -20,14 +20,14 @@ h1 {
     left: auto;
     top: 0px;
     width: 8%;
-    height: 110px;
+    height: 120px;
     border-bottom: 3px solid rgb(210, 210, 210);
     background-color: white;
 }
 
 #circleOverview {
     position: absolute;
-    height: 110px;
+    height: 120px;
     width: 84%;
     left: 8%;
     top: 0px;
@@ -42,7 +42,7 @@ h1 {
     left: auto;
     top: 0px;
     width: 1336px;
-    height: 110px;
+    height: 120px;
 }
 
 .circleDiv {
@@ -136,18 +136,22 @@ h1 {
 #bodyDiv {
     position: absolute;
     width: 1336px;
-    height: 1000px;
+    height: 800px;
     margin-top: 113px;
     display: grid;
 
 }
 
 #quoteDiv {
-    position: absolute;
-    width: 900px;
+    position: fixed;
+    width: 1332px;
     height: 30px;
-    left: 5px;
-    top: 10px;
+    left: auto;
+    top: 123px;
+    padding-top: 8px;
+    padding-left: 5px;
+    background-color: rgb(244, 244, 244);
+    border-bottom: 3px solid rgb(210, 210, 210);
 }
 #progressBoard {
     width: 900px;
@@ -185,5 +189,5 @@ h1 {
         width: 300px;
         height: 500px;
         background-color: lightgray;
-        
+        z-index: -1;
     }

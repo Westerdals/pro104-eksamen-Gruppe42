@@ -17,3 +17,4 @@ function renderQuote() {
     quoteDiv.innerHTML = `<i><q>${quoteArray[randomNr]}</q></i>`;
 }
 renderQuote();
+
