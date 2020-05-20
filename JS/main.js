@@ -17,10 +17,6 @@ var randomColor;
 function renderQuote() {
     quoteDiv.innerHTML = `<i><q>${quoteArray[randomNr]}</q></i>`;
 }
-renderQuote();
-
-
-
 
   // the function that gets the users on the page. 
   function renderUserList() {
@@ -34,7 +30,7 @@ renderQuote();
       //generates random color
       generateRandomColor();
       // creates a new div element
-      const userEl = document.createElement("div");
+
       const {username} = user;
       // sets the innerhtml to be the username and password.
       usersEl.innerHTML += ` <div class="circleDiv">
@@ -56,3 +52,5 @@ renderQuote();
     
   }
 
+  renderQuote();
+  renderUserList();
