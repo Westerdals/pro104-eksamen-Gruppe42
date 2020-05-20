@@ -12,6 +12,7 @@ var quoteArray = [
 ];
 var quoteDiv = document.getElementById("quoteDiv");
 var randomNr = Math.floor(Math.random()* quoteArray.length);
+var randomColor;
 
 function renderQuote() {
     quoteDiv.innerHTML = `<i><q>${quoteArray[randomNr]}</q></i>`;
