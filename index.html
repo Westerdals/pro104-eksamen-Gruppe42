@@ -7,25 +7,40 @@
     <title>Index/CreateUser</title>
 </head>
 <body>
+
+    <form onsubmit = "loginUser(event)"> 
+        <div id="loginDiv">
+            <input id="usernameLogin" name="usernameLogin" type="text" placeholder="username" required>
+            <input id="passwordLogin" name="passwordLogin" type="password" placeholder="password" required>
+            <input id="submitLogin" type="submit">
+        </div>
+        <script src="JS/loginUser.js"></script>
+    </form>
+    <button class="collapsible">Open Collapsible</button>
+<div class="content">
     <form onsubmit = "createNewUser(event)">
         <div id="createUserDiv">
             <h4>Register new user</h4>
             <input id="userNameInput" name="username" type="text" placeholder="username">
-            <input id="passwordInput" name="password" type="password" placeholder="password">
+            <input type="password" id="psw" name="psw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+
             <input id="passwordInput_2" name="password_2" type="password" placeholder="repeat password">
             <input id="submitUserBtn" type="submit">
-            <a href="login.html">
-                <p>Already registered? Log in here</p>
-            </a>
-
-            <div id="outputDiv"></div>
-
         </div>
     </form>
+
+    <div id="message">
+        <h3>Password must contain the following:</h3>
+        <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+        <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+        <p id="number" class="invalid">A <b>number</b></p>
+        <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+      </div>
+    <script src="JS/loginUser.js"></script>
     <script src="JS/createUser.js"></script>
     <br>
     <br>
     <br>
-    
+</div>
 </body>
 </html>

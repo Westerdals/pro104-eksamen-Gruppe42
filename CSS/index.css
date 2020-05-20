@@ -1,0 +1,55 @@
+.collapsible {
+    background-color: #777;
+    color: white;
+    cursor: pointer;
+    width: 10%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 20px;
+  }
+  
+  .active, .collapsible:hover {
+    background-color: #555;
+  }
+  
+  .content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    background-color: #f1f1f1;
+  }
+
+  
+  #message {
+    display:inline block;
+    background: #f1f1f1;
+    color: #000;
+    position: relative;
+    
+  }
+  
+  #message p {
+    font-size: 10px;
+  }
+  
+  /* Add a green text color */
+  .valid {
+    color: green;
+    
+  }
+  
+  .valid:before {
+    position: relative;
+    left: -35px;
+  }
+  
+  /* Add a red text color*/
+  .invalid {
+    color: red;
+  }
+  
+  .invalid:before {
+    position: relative;
+    left: -35px;
+  }
