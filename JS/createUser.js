@@ -6,7 +6,7 @@ function createNewUser(event) {
   
     //gets the name and password value from the input field
     const username = document.querySelector("[name = 'username']").value;
-    const password = document.querySelector("[name = 'password']").value;
+    const password = document.querySelector("[name = 'psw']").value;
     const password_2 = document.querySelector("[name = 'password_2']").value;
    
     // creates a teamMember from the information.
@@ -25,23 +25,22 @@ function createNewUser(event) {
         alert("passwords does not match")
     }else{
       
-      
+      /*
     console.log("this is")
     // Passord må inneholde (?)
-    var passw =   /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
+    var passw =   /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}$/;
     if(password.match(passw)) { 
-      alert("Correct, try another...");
+      console.log("congratz");
     }
     else { 
-        alert('Wrong...!')
+        alert('Wrong...!');
         return;
     }
-
+*/
 
         //Pushes the new users into the array so it doesnt erase the previous one. 
         users.push(user);
         window.localStorage.setItem("users", JSON.stringify(users));
-        renderUserList();
         addUser();
         // add users into the option field of assignmember. 
         // resets the input field so the values is default.
@@ -59,4 +58,3 @@ function createNewUser(event) {
       users = [];
   }
   
-
