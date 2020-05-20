@@ -15,6 +15,15 @@ h1 {
 }
 
 /* Header / Plant overview */
+
+#headerDiv {
+    position: fixed; 
+    left: auto;
+    top: 0px;
+    width: 1336px;
+    height: 120px;
+}
+
 #newMemberDiv {
     position: fixed; 
     left: auto;
@@ -35,14 +44,6 @@ h1 {
     overflow-x: scroll;
     white-space: nowrap;
     background-color: white;
-}
-
-#headerDiv {
-    position: fixed; 
-    left: auto;
-    top: 0px;
-    width: 1336px;
-    height: 120px;
 }
 
 .circleDiv {

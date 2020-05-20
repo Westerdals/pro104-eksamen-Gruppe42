@@ -33,7 +33,7 @@ function renderQuote() {
 
       const {username} = user;
       // sets the innerhtml to be the username and password.
-      usersEl.innerHTML = ` <div class="circleDiv">
+      usersEl.innerHTML += ` <div class="circleDiv">
       <div class="headerCircles" Style="border: 2px solid ${randomColor};
       ">
       </div>
@@ -44,7 +44,11 @@ function renderQuote() {
   }
 
   function generateRandomColor() {
-    randomColor =  "#"+((1<<24)*Math.random()|0).toString(16);
+    var r = Math.floor(Math.random()*256);
+    var b = Math.floor(Math.random()*256);
+    var g = Math.floor(Math.random()*256);
+    randomColor =  `rgb(${r}, ${b}, ${g})`;
+
     
   }
 
