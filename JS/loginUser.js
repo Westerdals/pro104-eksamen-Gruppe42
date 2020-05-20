@@ -5,7 +5,12 @@ function loginUser(event) {
     const users = JSON.parse(window.localStorage.getItem("users"));
 
     function redirectToMain() {
-        location.href = "main.html";
+        //self.location = "main.html"
+        //window.location.pathname = '/main.html';
+        
+        window.open("main.html","self");
+        console.log("Redirected");
+        
     }
 
     for(const user of users){
