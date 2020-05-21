@@ -8,7 +8,7 @@
 </head>
 <body>
 
-    <form onsubmit = "loginUser(event)"> 
+    <form id ="login" onsubmit = "loginUser(event)"> 
         <div id="loginDiv">
             <input id="usernameLogin" name="usernameLogin" type="text" placeholder="username" required>
             <input id="passwordLogin" name="passwordLogin" type="password" placeholder="password" required>
@@ -18,7 +18,7 @@
     </form>
     <button class="collapsible">Open Collapsible</button>
 <div class="content">
-    
+
     <form onsubmit = "createNewUser(event)">
         <div id="createUserDiv">
             <h4>Register new user</h4>

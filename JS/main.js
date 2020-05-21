@@ -10,16 +10,15 @@ var quoteArray = [
     "Keep going, keep growing",
     "A flower does not think of competing with the flower next to it, it just blossoms."
 ];
-var quoteDiv = document.getElementById("quoteDiv");
-var randomNr = Math.floor(Math.random()* quoteArray.length);
-var randomColor;
+let quoteDiv = document.getElementById("quoteDiv");
+let randomNr = Math.floor(Math.random()* quoteArray.length);
+let randomColor;
 
 function renderQuote() {
     quoteDiv.innerHTML = `<i><q>${quoteArray[randomNr]}</q></i>`;
 }
 renderQuote();
-
-
+renderUserList();
 
 
   // the function that gets the users on the page. 
@@ -31,11 +30,10 @@ renderQuote();
     usersEl.innerHTML ="";
     // usersEl.innerHTML="<span>Show group members</span>";
     for(const user of users){
-      //generates random color
-      generateRandomColor();
       // creates a new div element
       const userEl = document.createElement("div");
       const {username} = user;
+      const randomColor = user.randomColor;
       // sets the innerhtml to be the username and password.
       usersEl.innerHTML += ` <div class="circleDiv">
       <div class="headerCircles" Style="border: 2px solid ${randomColor};
@@ -47,12 +45,78 @@ renderQuote();
     users = [];
   }
 
-  function generateRandomColor() {
-    var r = Math.floor(Math.random()*256);
-    var b = Math.floor(Math.random()*256);
-    var g = Math.floor(Math.random()*256);
-    randomColor =  `rgb(${r}, ${b}, ${g})`;
+  renderMyUser();
 
-    
+  function renderMyUser(){
+      let myEL = document.getElementById("myPlantDiv");
+      let myUser = JSON.parse(window.localStorage.getItem("loggedInUser")) || []
+
   }
 
+
+
+  /*------------------------CREATE USER BELOW----------------------
+  createMenu = document.getElementById("createMenu");
+  createMenu.style.display = "none";
+
+  
+
+  let  = document.getElementById("createTask");
+  createTaskBTN.addEventListener("click",createNewTask);
+
+
+function createNewTask(event){
+    
+
+    /*
+    event.preventDefault();
+    const taskName = document.querySelector("[name='taskName']").value;
+    const description = document.querySelector("[name='description']").value;
+    const task = {taskName, description};           
+    const taskList = JSON.parse(window.localStorage.getItem("taskList")) || [];
+    taskList.push(task);
+    window.localStorage.setItem("taskList", JSON.stringify(taskList));
+    event.target.reset();
+    renderTaskList();
+
+    addTask();
+    
+}
+
+function addTask(){
+  taskList = JSON.parse(window.localStorage.getItem("taskList")) || [];
+  document.getElementById('myTasks').innerHTML = "";
+  for(const task of taskList){
+    console.log(taskList);
+      localStorage.getItem(taskList.name) ;
+      document.getElementById('myTasks').innerHTML +=  "<option value=>" + task.taskName + "</option>";
+  }
+  taskList = [];
+}
+
+function renderTaskList() {
+  let tasksEl = document.getElementById("outputDiv");
+  let taskList = JSON.parse(window.localStorage.getItem("taskList")) || [];
+   tasksEl.innerHTML ="";
+  for(const task of taskList){
+    
+    const taskEl = document.createElement("div");
+    const {taskName,description} = task;
+    taskEl.innerHTML =  `
+    <div class="objectDiv">
+      <h4>Task</h4>
+      <div>
+        <strong>Task:</strong> ${taskName}
+        <br>
+        <strong>Description:</strong> ${description}
+      </div>
+      <br>
+      <br>
+      <br>
+      <br>
+    </div>`;
+    tasksEl.appendChild(taskEl);
+  }
+  taskList = [];
+}
+*/

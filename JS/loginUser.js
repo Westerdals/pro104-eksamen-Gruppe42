@@ -1,4 +1,6 @@
+document.getElementById("login").addEventListener("submit",loginUser);
 function loginUser(event) {
+    event.preventDefault();
     const username = document.querySelector("[name = 'usernameLogin']").value;
     const password = document.querySelector("[name = 'passwordLogin']").value;
 
@@ -8,7 +10,7 @@ function loginUser(event) {
         //self.location = "main.html"
         //window.location.pathname = '/main.html';
         
-        window.open("main.html","self");
+        window.open("main.html","_self");
         console.log("Redirected");
         
     }
@@ -16,8 +18,11 @@ function loginUser(event) {
     for(const user of users){
         if(username === user.username) {
             if(password === user.password){
-                alert("login succeeded");
                 redirectToMain();
+                
+                let loggedinUser = user;
+                window.localStorage.setItem("loggedInUser",JSON.stringify())
+                window.localStorage.setItem("loggedInUser", JSON.stringify(loggedinUser));
             }else{
                 alert("incorrect username or password, please try again.");
             }
@@ -26,11 +31,11 @@ function loginUser(event) {
             console.log("couldnt find username. ");
         }
     }
+    
 }
 
 hide();
 
-//
 function hide(){
     var coll = document.getElementsByClassName("collapsible");
     var i;

@@ -8,9 +8,10 @@ function createNewUser(event) {
     const username = document.querySelector("[name = 'username']").value;
     const password = document.querySelector("[name = 'psw']").value;
     const password_2 = document.querySelector("[name = 'password_2']").value;
-   
+    generateRandomColor();
     // creates a teamMember from the information.
-    const user = { username,password};
+    const user = { username,password,randomColor};
+    
     const users = JSON.parse(window.localStorage.getItem("users")) || [];
     for(user1 of users){
         if(username === user1.username) {
@@ -58,3 +59,11 @@ function createNewUser(event) {
       users = [];
   }
   
+
+  function generateRandomColor() {
+    var r = Math.floor(Math.random()*256);
+    var b = Math.floor(Math.random()*256);
+    var g = Math.floor(Math.random()*256);
+    randomColor =  `rgb(${r}, ${b}, ${g})`;
+
+  }
