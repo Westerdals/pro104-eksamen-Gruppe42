@@ -17,6 +17,16 @@ let randomColor;
 function renderQuote() {
     quoteDiv.innerHTML = `<i><q>${quoteArray[randomNr]}</q></i>`;
 }
+
+function openForm(){
+    if(document.getElementById("form").style.display === "none"){
+        document.getElementById("form").style.display = "block";
+    }else{
+        document.getElementById("form").style.display = "none";
+    }
+    
+}
+
 renderQuote();
 renderUserList();
 
@@ -31,7 +41,7 @@ renderUserList();
     // usersEl.innerHTML="<span>Show group members</span>";
     for(const user of users){
       // creates a new div element
-      const userEl = document.createElement("div");
+
       const {username} = user;
       const randomColor = user.randomColor;
       // sets the innerhtml to be the username and password.
@@ -44,44 +54,71 @@ renderUserList();
     }
     users = [];
   }
-
+// Render user in top right corner 
   renderMyUser();
-
   function renderMyUser(){
       let myEL = document.getElementById("myPlantDiv");
       let myUser = JSON.parse(window.localStorage.getItem("loggedInUser")) || []
+      myEL.innerHTML =""
+
+      const {username} = myUser;
+      const randomColor = myUser.randomColor;
+      // sets the innerhtml to be the username and password.
+      myEL.innerHTML += ` <div class="circleDiv">
+      <div class="headerCircles" Style="border: 2px solid ${randomColor};
+      ">
+      </div>
+        <div class="circleTxt">${username}</div>
+            </div>`;
 
   }
 
-
-
-  /*------------------------CREATE USER BELOW----------------------
-  createMenu = document.getElementById("createMenu");
-  createMenu.style.display = "none";
-
-  
-
-  let  = document.getElementById("createTask");
-  createTaskBTN.addEventListener("click",createNewTask);
-
-
-function createNewTask(event){
-    
-
-    /*
+function createTask(){
     event.preventDefault();
-    const taskName = document.querySelector("[name='taskName']").value;
-    const description = document.querySelector("[name='description']").value;
-    const task = {taskName, description};           
+    document.getElementById("form").style.display = "none";
+    const taskName = document.querySelector("[name = 'taskName']").value;
+    const taskDescription = document.querySelector("[name = 'taskDescription']").value;
+    const assignMember = document.querySelector("[name = 'assignMember']").value;
+    console.log(taskName,taskDescription,assignMember);
+
+    const task = {taskName,taskDescription,assignMember}
     const taskList = JSON.parse(window.localStorage.getItem("taskList")) || [];
     taskList.push(task);
-    window.localStorage.setItem("taskList", JSON.stringify(taskList));
-    event.target.reset();
-    renderTaskList();
-
-    addTask();
+    window.localStorage.setItem("taskList",JSON.stringify(taskList));
     
 }
+renderToDo();
+function renderToDo(){
+    let tasksEL = document.getElementById("toDoColumn");
+    let taskList = JSON.parse(window.localStorage.getItem("taskList")) || [];
+    tasksEL.innerHTML = "";
+
+    for(const task of taskList){
+        const taskEL = document.createElement("div");
+        const {taskName,taskDescription,assignMember} = task;
+
+        taskEL.innerHTML =  `
+        <div class="objectDiv" ondragstart="dragstart_handler(event);" draggable="true"
+        data-json='{"order_id":229354,"zone":0,"type":0,"zone_id":57}'
+        >
+          <h4>Task</h4>
+          <div>
+            <strong>Task:</strong> ${taskName}
+            <br>
+            <strong>Description:</strong> ${taskDescription}
+          </div>
+          <strong>Team: ${assignMember}</strong>
+          <br>
+          <br>
+        </div>`;
+        tasksEL.appendChild(taskEL);
+        
+    }
+
+    }
+
+  /*------------------------CREATE USER FRA ARBEIDSKRAVET BELOW----------------------
+
 
 function addTask(){
   taskList = JSON.parse(window.localStorage.getItem("taskList")) || [];

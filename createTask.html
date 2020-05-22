@@ -1,13 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+
+<html lang=en>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="CSS/createTask.css">
-    <title>Document</title>
-</head>
-<body>
+    <meta charset=utf-8>
+    <meta >
+          <title>Create Task</title>
+    <link rel="stylesheet" type="text/css" href="createTask.css">
+    </head>
     
-    
-</body>
+    <body>
+        <button class="open-button" onclick="openForm()">Create Task</button>
+        <div class="form-popup" id="form">
+            
+        <form class="form-container">
+            
+        <h1>Create task</h1>
+        <p>Fill in this form to create a task!</p>
+        
+            
+        
+        <label for="taskName"> <b>Task Name</b></label>
+        <input type="text" placeholder="Enter Task Name" name="taskName" required>
+        <br><br>
+        <label for="taskDescription"> <b>Task Description</b></label>
+        <input type="text" placeholder="Enter Task Description" name="taskDescription" required>
+        <br><br>
+        <label for="assignMember"> <b>Assign Member</b></label>
+        <input type="text" placeholder="Enter member name" name="assignMember" required>
+        <br><br>
+           
+                
+                
+                
+                    <button type="submit" class="cancelbtn" onclick="closeForm()">Cancel</button>
+                    <button type="submit" class="createbtn">Create task</button>
+                    
+              
+            </form>
+        </div>
+    </body>
 </html>
+
+<script>
+
+
+
+</script>

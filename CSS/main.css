@@ -12,6 +12,7 @@ h1 {
     height: 700px;
     margin-left: auto;
     margin-right: auto;
+    overflow: hidden;
 }
 
 /* Header / Plant overview */
@@ -178,39 +179,89 @@ h1 {
     border-left: 3px solid #c2d8c7;
     border-right: 5px solid #99ad9d;
     border-bottom: 5px solid #99ad9d;
-    z-index: -2;
+    z-index: 0;
 }
 
     /* Feed */
     #feedDiv {
         position: absolute;
-        right: 0px;
-        top: 175px;
+        right: -30px;
+        top: 180px;
         width: 300px;
         height: 500px;
         background-color: lightgray;
+        border-radius: 20px;
         z-index: -1;
     }
 
+.open-button{
+    background-color: #555;
+    color:white;
+    padding:16px 20px;
+    border:none;
+    cursor:pointer;
+    opacity: 0.8;
+    position:fixed;
+    bottom:23px;
+    right:28px;
+    width:280px;
+}
+
+.form-popup{
+    display: none;
+    position:fixed;
+    bottom: 200px;
+    right: 550px;
+    border: 3px solid #f1f1f1;
+    z-index: 9;
+}
+
+.form-container{
+    max-width: 300px;
+    padding: 10px;
+    background-color: white;
+}
 
 
-    #createTask{
-        background-color: rgb(169,169,169,0.5);
-        width: 50px;
-        height: 50px;
-    }
 
-    #createMenu{
-        background-color: rgb(169,169,169,1);
-        position: absolute;
-        width: 500px;
-        height: 600px;
-        left: 400px;
-        top: 250px;
-        text-align: center;
-    }
+.form-container input[type=text]{
+    width: 80%;
+    padding:15px;
+    margin: 5px 0 22px 0;
+    border: none;
+    background: #f1f1f1;
+}
 
-    #createMenu h1{
-        margin: 20px;
-        text-align: center;
-    }
+.form-container input[type=text]:focus,{
+    background-color: #ddd;
+    outline: none;
+}
+
+.form-container .btn{
+    background-color:  #4caf50;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor:pointer;
+    width:100%;
+    margin-bottom: 10px;
+    opacity: 0.8;
+}
+
+.form-container .cancel{
+    background-color: red;
+}
+
+.form-container .btn:hover, .open-button:hover{
+    opacity: 1;
+}
+
+
+
+
+
+#toDoColumn{
+    text-align: center;
+    overflow: auto;
+    font-size: 12px;
+}
