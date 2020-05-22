@@ -129,8 +129,7 @@ function renderToDo(){
 
 
     function dragstart_handler(event){
-      console.log("dragstart");
-      event.
+      console.log("dragstart");;
     }
 
     function dragover_handler(event){
