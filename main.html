@@ -53,10 +53,13 @@
                         &nbsp &nbsp To do
                         <div></div>
                     </div>
-                    <div id="inProgressColumn" class="progressColumns" style="left: 300px;">
+                    <div id="inProgressColumn" class="progressColumns" style="left: 300px;"
+                    ondrop="drop_handler(event);" ondragover="dragover_handler(event);"
+                    >
                         &nbsp &nbsp In progress
                     </div>
-                    <div id="completedColumn" class="progressColumns" style="left: 600px;">
+                    <div id="completedColumn" class="progressColumns" style="left: 600px;"
+                    ondrop="drop_handler(event);" ondragover="dragover_handler(event);">
                         &nbsp &nbsp Completed
                     </div>
                 </div>

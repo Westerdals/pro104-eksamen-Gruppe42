@@ -95,11 +95,21 @@ function renderToDo(){
 
     for(const task of taskList){
         const taskEL = document.createElement("div");
+        taskEL.draggable = true;
+        taskEL.addEventListener("dragstart",event =>{
+            data= task;
+            console.log(data);
+            event.currentTarget.style.border = "dashed";
+            console.log(event.target.getAttribute("data-json"));
+            event.dataTransfer.setData("text/plain",event.target.id);   
+        })
         const {taskName,taskDescription,assignMember} = task;
-
+        
+/*        ondragstart="dragstart_handler(event);" draggable="true"
+        data-json='{"taskName:${taskName}, "TaskDescription: 
+        ${taskDescription}, Assigned Member:  ${assignMember}"'*/
         taskEL.innerHTML =  `
-        <div class="objectDiv" ondragstart="dragstart_handler(event);" draggable="true"
-        data-json='{"order_id":229354,"zone":0,"type":0,"zone_id":57}'
+        <div class="objectDiv" 
         >
           <h4>Task</h4>
           <div>
@@ -115,6 +125,45 @@ function renderToDo(){
         
     }
 
+    }
+
+
+    function dragstart_handler(event){
+      console.log("dragstart");
+      event.
+    }
+
+    function dragover_handler(event){
+        console.log("dragging over");
+        event.preventDefault();
+        
+    }
+
+    function drop_handler(event){
+        event.preventDefault();
+        console.log(data);
+        const movedEL = document.createElement("div");
+        movedEL.draggable = true;
+        movedEL.addEventListener("dragstart",event =>{
+            event.currentTarget.style.border = "dashed";
+            event.dataTransfer.setData("text/plain",event.target.id);   
+          });
+
+        movedEL.innerHTML =  `
+        <div class="objectDiv" 
+        >
+          <div>
+            <strong>Task:</strong> ${data.taskName}
+            <br>
+            <strong>Description:</strong> ${data.taskDescription}
+          </div>
+          <strong>Team: ${data.assignMember}</strong>
+          <br>
+          <br>
+        </div>`;
+        event.target.appendChild(movedEL);
+        event.dataTransfer.clearData();
+        
     }
 
   /*------------------------CREATE USER FRA ARBEIDSKRAVET BELOW----------------------
