@@ -120,16 +120,15 @@ function renderToDo(){
         const {taskName,taskDescription,assignMember,i} = task;
         taskEL.innerHTML =  `
         <div class="objectDiv" 
-        >
-          <div>
-            <strong>Task:</strong> ${taskName}
-            <br>
-            <strong>Description:</strong> ${taskDescription}
-          </div>
-          <strong>Team:</strong>  ${assignMember}
+      >
+        <div>
+          <strong>Task:</strong> ${taskName}
           <br>
-          <br>
-        </div>`;
+          <strong>Description:</strong> ${taskDescription}
+        </div>
+        <strong>Responsibility:</strong> <i> ${assignMember}</i>
+        <br>
+      </div>`;
         tasksEL.appendChild(taskEL);
         
     }
@@ -172,14 +171,13 @@ function renderInProgress(){
       taskEL.innerHTML =  `
       <div class="objectDiv" 
       >
-        <h4>Task</h4>
+        <h3>Task</h3>
         <div>
-          <strong>Task:</strong> ${taskName}
+          <strong>Title:</strong> ${taskName}
           <br>
           <strong>Description:</strong> ${taskDescription}
         </div>
-        <strong>Team: ${assignMember}</strong>
-        <br>
+        <strong>Responsibility:</strong> <i> ${assignMember}</i>
         <br>
       </div>`;
       
@@ -228,7 +226,7 @@ let index = 0;
           <br>
           <strong>Description:</strong> ${taskDescription}
         </div>
-        <strong>Team:</strong> <i> ${assignMember}</i>
+        <strong>Responsibility:</strong> <i> ${assignMember}</i>
         <br>
       </div>`;
       tasksEL.appendChild(taskEL);
