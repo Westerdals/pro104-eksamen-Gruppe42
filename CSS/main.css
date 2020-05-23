@@ -23,6 +23,7 @@ h1 {
     top: 0px;
     width: 1336px;
     height: 120px;
+    overflow: hidden;
 }
 
 #newMemberDiv {
@@ -110,6 +111,7 @@ h1 {
 #myPlantDiv {
     position: absolute;
     display: inline-block;
+    padding-left: 3px;
     width: 8%;
     height: 100%;
     right: 0px;
@@ -117,20 +119,20 @@ h1 {
     top: 0px;
     border-bottom: 3px solid #4c794a;
     border-left: 1px solid rgb(210, 210, 210);
-    background-color: rgb(244, 244, 244);
 }
 
 #myPlantCircle {
     position: absolute;
-    top: 20px;
-    margin-left: 70px;
+    padding-left: 10px;
     border: 2px solid #68c959;
     width: 75px;
     height: 75px;
     border-radius: 50%;
     overflow: hidden;
-    background-color: white;
+    background-color: greenyellow;
 }
+
+
 
 /* BODY */
 
