@@ -1,7 +1,7 @@
 document.getElementById("login").addEventListener("submit",loginUser);
 function loginUser(event) {
     event.preventDefault();
-    const username = document.querySelector("[name = 'usernameLogin']").value;
+    const userName = document.querySelector("[name = 'usernameLogin']").value;
     const password = document.querySelector("[name = 'passwordLogin']").value;
 
     const users = JSON.parse(window.localStorage.getItem("users"));
@@ -16,13 +16,10 @@ function loginUser(event) {
     }
 
     for(const user of users){
-        if(username === user.username) {
+        if(userName === user.username) {
             if(password === user.password){
+                window.localStorage.setItem("loggedInUser", JSON.stringify(user));
                 redirectToMain();
-                
-                let loggedinUser = user;
-                window.localStorage.setItem("loggedInUser",JSON.stringify())
-                window.localStorage.setItem("loggedInUser", JSON.stringify(loggedinUser));
             }else{
                 alert("incorrect username or password, please try again.");
             }

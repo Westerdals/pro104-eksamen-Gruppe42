@@ -207,7 +207,7 @@ let index = 0;
       console.log("Task deleted:", storedValues.splice(index, 1));
       // stores the list back into localstorage with the element removed. 
       localStorage.setItem(event.currentTarget.parentElement.id, JSON.stringify(storedValues));
-      event.dataTransfer.setData("text/plain",event.target.id);
+      
       
   });
         
@@ -251,6 +251,20 @@ let index = 0;
         renderAll();
     }
 
+/*-------------------------------Feed --------------------------------------------*/
+
+function renderFeed(){
+  feedEl = document.getElementById("feedDiv")
+  let loggedUser = JSON.parse(localStorage.getItem("loggedInUser"));
+  feedEl.innerHTML = loggedUser.username;
+  console.log(loggedUser.username);
+
+  let toDoList = JSON.parse(localStorage.getItem("toDoColumn"));
+  console.log(toDoList);
+
+}
+
+
 renderAll();
 // added function to render everytask so its easier than to call  functions. / or make a system to loop through different variants.
 function renderAll() {
@@ -260,5 +274,5 @@ function renderAll() {
   renderMyUser();
   renderQuote();
   renderUserList();
-
+  renderFeed();
 }
