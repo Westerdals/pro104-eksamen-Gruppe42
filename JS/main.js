@@ -68,7 +68,7 @@ renderUserList();
       <div class="headerCircles" Style="border: 2px solid ${randomColor};
       ">
       </div>
-        <div class="circleTxt">${username}</div>
+        <div class="circleTxt">My profile</div>
             </div>`;
 
   }
@@ -124,9 +124,9 @@ function renderToDo(){
         <div>
           <strong>Task:</strong> ${taskName}
           <br>
-          <strong>Description:</strong> ${taskDescription}
+          <strong>Description:</strong> <br><p>${taskDescription}</p>
         </div>
-        <strong>Responsibility:</strong> <i> ${assignMember}</i>
+        <br><strong>Responsibility:</strong> <i> ${assignMember}</i>
         <br>
       </div>`;
         tasksEL.appendChild(taskEL);
@@ -171,13 +171,12 @@ function renderInProgress(){
       taskEL.innerHTML =  `
       <div class="objectDiv" 
       >
-        <h3>Task</h3>
         <div>
-          <strong>Title:</strong> ${taskName}
+          <strong>Task:</strong> ${taskName}
           <br>
-          <strong>Description:</strong> ${taskDescription}
+          <strong>Description:</strong> <br><p>${taskDescription}</p>
         </div>
-        <strong>Responsibility:</strong> <i> ${assignMember}</i>
+        <br><strong>Responsibility:</strong> <i> ${assignMember}</i>
         <br>
       </div>`;
       
@@ -220,13 +219,12 @@ let index = 0;
       taskEL.innerHTML =  `
       <div class="objectDiv" 
       >
-        <h4>Task</h4>
         <div>
-          <strong>Title:</strong> ${taskName}
+          <strong>Task:</strong> ${taskName}
           <br>
-          <strong>Description:</strong> ${taskDescription}
+          <strong>Description:</strong> <br><p>${taskDescription}</p>
         </div>
-        <strong>Responsibility:</strong> <i> ${assignMember}</i>
+        <br><strong>Responsibility:</strong> <i> ${assignMember}</i>
         <br>
       </div>`;
       tasksEL.appendChild(taskEL);
