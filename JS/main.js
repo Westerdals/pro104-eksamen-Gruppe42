@@ -72,8 +72,8 @@ renderUserList();
             </div>`;
 
   }
-
 function createTask(){
+  
     event.preventDefault();
     document.getElementById("form").style.display = "none";
     const taskName = document.querySelector("[name = 'taskName']").value;
@@ -82,32 +82,42 @@ function createTask(){
     console.log(taskName,taskDescription,assignMember);
 
     const task = {taskName,taskDescription,assignMember}
-    const taskList = JSON.parse(window.localStorage.getItem("taskList")) || [];
+    const taskList = JSON.parse(window.localStorage.getItem("toDoColumn")) || [];
     taskList.push(task);
-    window.localStorage.setItem("taskList",JSON.stringify(taskList));
-    
+    window.localStorage.setItem("toDoColumn",JSON.stringify(taskList));   
 }
-renderToDo();
 function renderToDo(){
     let tasksEL = document.getElementById("toDoColumn");
-    let taskList = JSON.parse(window.localStorage.getItem("taskList")) || [];
+    let taskList = JSON.parse(window.localStorage.getItem("toDoColumn")) || [];
     tasksEL.innerHTML = "";
-
     for(const task of taskList){
+      
         const taskEL = document.createElement("div");
         taskEL.draggable = true;
         taskEL.addEventListener("dragstart",event =>{
             data= task;
-            console.log(data);
-            event.currentTarget.style.border = "dashed";
-            console.log(event.target.getAttribute("data-json"));
-            event.dataTransfer.setData("text/plain",event.target.id);   
-        })
-        const {taskName,taskDescription,assignMember} = task;
+            // store the values to check them against the array to find position
+            let tempTaskName = data.taskName;
+            let tempTaskDescription = data.taskDescription;
+            // gets the list from localstorage- uses "event.currentarget." to be able to use it in all 3 columns. since we store the value with that tag.
+            let storedValues =  JSON.parse(localStorage.getItem(event.currentTarget.parentElement.id))
+            // loops through the array and finds the first value that fit both taskname and taskdescription, can also add teammember
+            // but since its more likely you have a taskname that is common and taskdescription is different teammember becomes redundant. 
+            let index = storedValues.findIndex(storedValue=> {
+              if(storedValue.taskName === tempTaskName && storedValue.taskDescription === tempTaskDescription){
+                return true;
+              }
+              return false;
+            });
+            // do not remove this console.log it both shows and applies the .splice. 
+            console.log("Task deleted:", storedValues.splice(index, 1));
+            // stores the list back into localstorage with the element removed. 
+            localStorage.setItem(event.currentTarget.parentElement.id, JSON.stringify(storedValues));
+            event.dataTransfer.setData("text/plain",event.target.id);  
+        });
         
-/*        ondragstart="dragstart_handler(event);" draggable="true"
-        data-json='{"taskName:${taskName}, "TaskDescription: 
-        ${taskDescription}, Assigned Member:  ${assignMember}"'*/
+        
+        const {taskName,taskDescription,assignMember,i} = task;
         taskEL.innerHTML =  `
         <div class="objectDiv" 
         >
@@ -125,83 +135,134 @@ function renderToDo(){
         
     }
 
-    }
+}
 
+function renderInProgress(){
+  let tasksEL = document.getElementById("inProgressColumn");
+  let inProgressList = JSON.parse(window.localStorage.getItem("inProgressColumn")) || [];
+  tasksEL.innerHTML = "";
 
+  for(const task of inProgressList){
+           
+    const taskEL = document.createElement("div");
+    taskEL.draggable = true;
+    taskEL.addEventListener("dragstart",event =>{
+        data= task;
+        // store the values to check them against the array to find position
+        let tempTaskName = data.taskName;
+        let tempTaskDescription = data.taskDescription;
+        // gets the list from localstorage- uses "event.currentarget." to be able to use it in all 3 columns. since we store the value with that tag.
+        let storedValues =  JSON.parse(localStorage.getItem(event.currentTarget.parentElement.id))
+        // loops through the array and finds the first value that fit both taskname and taskdescription, can also add teammember
+        // but since its more likely you have a taskname that is common and taskdescription is different teammember becomes redundant. 
+        let index = storedValues.findIndex(storedValue=> {
+          if(storedValue.taskName === tempTaskName && storedValue.taskDescription === tempTaskDescription){
+            return true;
+          }
+          return false;
+        });
+        // do not remove this console.log it both shows and applies the .splice. 
+        console.log("Task deleted:", storedValues.splice(index, 1));
+        // stores the list back into localstorage with the element removed. 
+        localStorage.setItem(event.currentTarget.parentElement.id, JSON.stringify(storedValues));
+        event.dataTransfer.setData("text/plain",event.target.id);
+        
+    });
+    tasksEL.appendChild(taskEL);
+      const {taskName,taskDescription,assignMember} = task;
+      taskEL.innerHTML =  `
+      <div class="objectDiv" 
+      >
+        <h4>Task</h4>
+        <div>
+          <strong>Task:</strong> ${taskName}
+          <br>
+          <strong>Description:</strong> ${taskDescription}
+        </div>
+        <strong>Team: ${assignMember}</strong>
+        <br>
+        <br>
+      </div>`;
+      
+      
+  }
+}
+
+function renderCompleted(){
+  let tasksEL = document.getElementById("completedColumn");
+  let inProgressList = JSON.parse(window.localStorage.getItem("completedColumn")) || [];
+  tasksEL.innerHTML = "";
+let index = 0;
+  for(const task of inProgressList){
+      const taskEL = document.createElement("div");
+      taskEL.draggable = true;
+     taskEL.addEventListener("dragstart",event =>{
+            let data= task;
+            let tempTaskName = data.taskName;
+            let storedValues =  JSON.parse(localStorage.getItem(event.currentTarget.parentElement.id))
+            let index = storedValues.findIndex(storedValue=> {
+              
+              if(storedValue.taskName === tempTaskName){
+                return true;
+              }
+              return false;
+            });
+            localStorage.setItem(event.currentTarget.parentElement.id, JSON.stringify(storedValues.slice(index[1])));
+            event.currentTarget.style.border = "dashed";
+            event.dataTransfer.setData("text/plain",event.target.id);  
+        })
+        
+      const {taskName,taskDescription,assignMember} = task;
+      taskEL.innerHTML =  `
+      <div class="objectDiv" 
+      >
+        <h4>Task</h4>
+        <div>
+          <strong>Task:</strong> ${taskName}
+          <br>
+          <strong>Description:</strong> ${taskDescription}
+        </div>
+        <strong>Team: ${assignMember}</strong>
+        <br>
+        <br>
+      </div>`;
+      tasksEL.appendChild(taskEL);
+      
+  }
+
+}
     function dragstart_handler(event){
-      console.log("dragstart");;
+      
     }
 
     function dragover_handler(event){
-        console.log("dragging over");
         event.preventDefault();
         
     }
 
     function drop_handler(event){
         event.preventDefault();
-        console.log(data);
-        const movedEL = document.createElement("div");
-        movedEL.draggable = true;
-        movedEL.addEventListener("dragstart",event =>{
-            event.currentTarget.style.border = "dashed";
-            event.dataTransfer.setData("text/plain",event.target.id);   
-          });
-
-        movedEL.innerHTML =  `
-        <div class="objectDiv" 
-        >
-          <div>
-            <strong>Task:</strong> ${data.taskName}
-            <br>
-            <strong>Description:</strong> ${data.taskDescription}
-          </div>
-          <strong>Team: ${data.assignMember}</strong>
-          <br>
-          <br>
-        </div>`;
-        event.target.appendChild(movedEL);
-        event.dataTransfer.clearData();
-        
+        let taskName = data.taskName;
+        let taskDescription = data.taskDescription;
+        let assignMember = data.assignMember
+        const task = {taskName,taskDescription,assignMember}
+        const taskList = JSON.parse(window.localStorage.getItem(event.currentTarget.id)) || [];
+        taskList.push(task);
+        window.localStorage.setItem(event.currentTarget.id,JSON.stringify(taskList));
+        console.log(event.target.parentElement.parentElement.id);
+        console.log(event.target.id);
+        console.log(event.target.parentElement.id)
+        console.log(event.currentTarget.id,"current target");
+        console.log("above");
+        renderAll();
     }
 
-  /*------------------------CREATE USER FRA ARBEIDSKRAVET BELOW----------------------
 
+renderAll();
+// added function to render everytask so its easier than to call  functions. / or make a system to loop through different variants.
+function renderAll() {
+  renderInProgress();
+  renderToDo();
+  renderCompleted();
 
-function addTask(){
-  taskList = JSON.parse(window.localStorage.getItem("taskList")) || [];
-  document.getElementById('myTasks').innerHTML = "";
-  for(const task of taskList){
-    console.log(taskList);
-      localStorage.getItem(taskList.name) ;
-      document.getElementById('myTasks').innerHTML +=  "<option value=>" + task.taskName + "</option>";
-  }
-  taskList = [];
 }
-
-function renderTaskList() {
-  let tasksEl = document.getElementById("outputDiv");
-  let taskList = JSON.parse(window.localStorage.getItem("taskList")) || [];
-   tasksEl.innerHTML ="";
-  for(const task of taskList){
-    
-    const taskEl = document.createElement("div");
-    const {taskName,description} = task;
-    taskEl.innerHTML =  `
-    <div class="objectDiv">
-      <h4>Task</h4>
-      <div>
-        <strong>Task:</strong> ${taskName}
-        <br>
-        <strong>Description:</strong> ${description}
-      </div>
-      <br>
-      <br>
-      <br>
-      <br>
-    </div>`;
-    tasksEl.appendChild(taskEl);
-  }
-  taskList = [];
-}
-*/
