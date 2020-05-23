@@ -249,10 +249,11 @@ h1 {
 .form-popup{
     display: none;
     position:fixed;
-    bottom: 200px;
+    bottom: 130px;
     right: 550px;
     border: 3px solid #f1f1f1;
     z-index: 9;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .form-container{
