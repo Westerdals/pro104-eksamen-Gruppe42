@@ -222,7 +222,7 @@ let index = 0;
       >
         <h4>Task</h4>
         <div>
-          <strong>Task:</strong> ${taskName}
+          <strong>Title:</strong> ${taskName}
           <br>
           <strong>Description:</strong> ${taskDescription}
         </div>
