@@ -12,32 +12,26 @@ var quoteArray = [
 ];
 let quoteDiv = document.getElementById("quoteDiv");
 let randomNr = Math.floor(Math.random()* quoteArray.length);
-let randomColor;
 
 function renderQuote() {
     quoteDiv.innerHTML = `<i><q>${quoteArray[randomNr]}</q></i>`;
 }
 
 function openForm(){
-    if(document.getElementById("form").style.display === "none"){
-        document.getElementById("form").style.display = "block";
-    }else{
+    if(document.getElementById("form").style.display === "block"){
         document.getElementById("form").style.display = "none";
+    }else{
+        document.getElementById("form").style.display = "block";
     }
     
 }
-
-renderQuote();
-renderUserList();
-
-
-  // the function that gets the users on the page. 
   function renderUserList() {
     // Link to a div in the html file.
     let usersEl = document.getElementById("circleOverview");
     // get users from local storage or if its null an empty array.
     let users = JSON.parse(window.localStorage.getItem("users")) || [];
     usersEl.innerHTML ="";
+    let memberOption = document.getElementById("selectMember");
     // usersEl.innerHTML="<span>Show group members</span>";
     for(const user of users){
       // creates a new div element
@@ -51,11 +45,14 @@ renderUserList();
       </div>
         <div class="circleTxt">${username}</div>
             </div>`;
+      
+      memberOption.innerHTML += `<option value ="${username}">${username}</option>`
+      console.log(username)
     }
     users = [];
+
   }
 // Render user in top right corner 
-  renderMyUser();
   function renderMyUser(){
       let myEL = document.getElementById("myPlantDiv");
       let myUser = JSON.parse(window.localStorage.getItem("loggedInUser")) || []
@@ -89,7 +86,7 @@ function createTask(){
 function renderToDo(){
     let tasksEL = document.getElementById("toDoColumn");
     let taskList = JSON.parse(window.localStorage.getItem("toDoColumn")) || [];
-    tasksEL.innerHTML = "";
+    tasksEL.innerHTML = "Current tasks : "+ taskList.length;
     for(const task of taskList){
       
         const taskEL = document.createElement("div");
@@ -115,9 +112,7 @@ function renderToDo(){
             localStorage.setItem(event.currentTarget.parentElement.id, JSON.stringify(storedValues));
             event.dataTransfer.setData("text/plain",event.target.id);  
         });
-        
-        
-        const {taskName,taskDescription,assignMember,i} = task;
+        const {taskName,taskDescription,assignMember} = task;
         taskEL.innerHTML =  `
         <div class="objectDiv" 
         >
@@ -132,16 +127,14 @@ function renderToDo(){
           <br>
         </div>`;
         tasksEL.appendChild(taskEL);
-        
     }
 
+    
 }
-
 function renderInProgress(){
   let tasksEL = document.getElementById("inProgressColumn");
   let inProgressList = JSON.parse(window.localStorage.getItem("inProgressColumn")) || [];
-  tasksEL.innerHTML = "";
-
+  tasksEL.innerHTML = "Current tasks : "+ inProgressList.length;
   for(const task of inProgressList){
            
     const taskEL = document.createElement("div");
@@ -187,13 +180,12 @@ function renderInProgress(){
       
   }
 }
-
 function renderCompleted(){
   let tasksEL = document.getElementById("completedColumn");
-  let inProgressList = JSON.parse(window.localStorage.getItem("completedColumn")) || [];
-  tasksEL.innerHTML = "";
+  let completedList = JSON.parse(window.localStorage.getItem("completedColumn")) || [];
+  tasksEL.innerHTML = "Current tasks : "+completedList.length;
 let index = 0;
-  for(const task of inProgressList){
+  for(const task of completedList){
       const taskEL = document.createElement("div");
       taskEL.draggable = true;
      taskEL.addEventListener("dragstart",event =>{
@@ -259,12 +251,14 @@ let index = 0;
         renderAll();
     }
 
-
 renderAll();
 // added function to render everytask so its easier than to call  functions. / or make a system to loop through different variants.
 function renderAll() {
   renderInProgress();
   renderToDo();
   renderCompleted();
+  renderMyUser();
+  renderQuote();
+  renderUserList();
 
 }

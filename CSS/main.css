@@ -265,3 +265,8 @@ h1 {
     overflow: auto;
     font-size: 12px;
 }
+
+
+#selectMember{
+    width: 150px;
+}
