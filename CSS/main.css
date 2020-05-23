@@ -200,12 +200,7 @@ h1 {
     overflow-y: scroll;
     overflow-x: hidden;
     white-space: nowrap;
-    color: gray;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 30px;
-    padding-top: 15px;
-    border-radius: 1px;
-    border: 1px solid black;
+    border: 1px solid #4c794a;
 
     z-index: 0;
 }
@@ -221,6 +216,7 @@ h1 {
         right: 256px;
 
     }
+
     #feedDiv {
         position: absolute;
         right: 20px;
@@ -299,8 +295,22 @@ h1 {
 }
 
 #toDoColumn{
-    text-align: center;
     overflow: auto;
     font-size: 12px;
     cursor: grab;
+}
+
+.objectDiv {
+    position: relative;
+    font-family: Arial, Helvetica, sans-serif;
+    left: 10px;
+    margin-top: 10px;
+    padding-left: 10px;
+    padding-top: 10px;
+    width: 260px;
+    height: 80px;
+    border: 2px solid #abc1a9;;
+    overflow-y: scroll;
+    border-radius: 10px;
+    
 }

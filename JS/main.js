@@ -121,13 +121,12 @@ function renderToDo(){
         taskEL.innerHTML =  `
         <div class="objectDiv" 
         >
-          <h4>Task</h4>
           <div>
             <strong>Task:</strong> ${taskName}
             <br>
             <strong>Description:</strong> ${taskDescription}
           </div>
-          <strong>Team: ${assignMember}</strong>
+          <strong>Team:</strong>  ${assignMember}
           <br>
           <br>
         </div>`;
@@ -229,8 +228,7 @@ let index = 0;
           <br>
           <strong>Description:</strong> ${taskDescription}
         </div>
-        <strong>Team: ${assignMember}</strong>
-        <br>
+        <strong>Team:</strong> <i> ${assignMember}</i>
         <br>
       </div>`;
       tasksEL.appendChild(taskEL);
