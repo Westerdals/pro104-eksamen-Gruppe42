@@ -22,18 +22,6 @@
                      </a>
                 </div>
                     <div id="circleOverview">
-                        
-                        <!-- <div class="circleDiv">
-                            <div class="headerCircles">
-                            </div>
-                            <div class="circleTxt">Bruker</div>
-                        </div>
-                        
-                        <div class="circleDiv">
-                            <div class="headerCircles">
-                            </div>
-                            <div class="circleTxt">Benjamin</div>
-                        </div> -->
 
                         <script src="JS/createUser.js"></script>
                     </div>
@@ -48,25 +36,33 @@
         <body>
             <div id="bodyDiv">
                 <div id="quoteDiv"></div>
+
+                <div id="progressTxtDivs">
+                    <div id="txtBox1" class="progressTxt">TO DO</div>
+                    <div id="txtBox2" class="progressTxt">IN PROGRESS</div>
+                    <div class="progressTxt">COMPLETED</div>
+                </div>
+
                 <div id="progressBoard">
                     <div id="toDoColumn" class="progressColumns"
                     ondrop="drop_handler(event);" ondragover="dragover_handler(event);" >
-                        &nbsp &nbsp To do
+                       
                         <div></div>
                     </div>
                     <div id="inProgressColumn" class="progressColumns" style="left: 300px;"
                     ondrop="drop_handler(event);" ondragover="dragover_handler(event);"
                     >
-                        &nbsp &nbsp In progress
+                        
                     </div>
                     <div id="completedColumn" class="progressColumns" style="left: 600px;"
                     ondrop="drop_handler(event);" ondragover="dragover_handler(event);">
-                        &nbsp &nbsp Completed
+                        
                     </div>
                 </div>
 
+                <div id="feedHeader">FEED</div>
             <div id="feedDiv">
-                <h1>Feed</h1>
+                
             </div>
 
             <button class="open-button" onclick="openForm()">Create Task</button>
