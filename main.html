@@ -22,23 +22,11 @@
                      </a>
                 </div>
                     <div id="circleOverview">
-                        
-                        <!-- <div class="circleDiv">
-                            <div class="headerCircles">
-                            </div>
-                            <div class="circleTxt">Bruker</div>
-                        </div>
-                        
-                        <div class="circleDiv">
-                            <div class="headerCircles">
-                            </div>
-                            <div class="circleTxt">Benjamin</div>
-                        </div> -->
 
                         <script src="JS/createUser.js"></script>
                     </div>
                 <div id="myPlantDiv">
-                    <div id="myPlantCircle">
+                    <div id="myProfileCircle">
                     </div>
                     <div id="myPlantTxt" class="circleTxt">My plant</div>
                 </div>
@@ -48,51 +36,54 @@
         <body>
             <div id="bodyDiv">
                 <div id="quoteDiv"></div>
+
+                <div id="progressTxtDivs">
+                    <div id="txtBox1" class="progressTxt">TO DO</div>
+                    <div id="txtBox2" class="progressTxt">IN PROGRESS</div>
+                    <div class="progressTxt">COMPLETED</div>
+                </div>
+
                 <div id="progressBoard">
                     <div id="toDoColumn" class="progressColumns"
                     ondrop="drop_handler(event);" ondragover="dragover_handler(event);" >
-                        &nbsp &nbsp To do
+                       
                         <div></div>
                     </div>
                     <div id="inProgressColumn" class="progressColumns" style="left: 300px;"
                     ondrop="drop_handler(event);" ondragover="dragover_handler(event);"
                     >
-                        &nbsp &nbsp In progress
+                        
                     </div>
                     <div id="completedColumn" class="progressColumns" style="left: 600px;"
                     ondrop="drop_handler(event);" ondragover="dragover_handler(event);">
-                        &nbsp &nbsp Completed
+                        
                     </div>
                 </div>
 
+                <div id="feedHeader">FEED</div>
             <div id="feedDiv">
-                <h1>Feed</h1>
-                <div id ="toDoFeed">hey</div>
-                <div id = "inProgFeed">heyy</div>
-                <div id = "compFeed">heyyy</div>
-
+                
             </div>
 
             <button class="open-button" onclick="openForm()">Create Task</button>
             <div class="form-popup" id="form">
             
                 <form class="form-container" onsubmit="createTask(event)">
-                    <h1>Create task</h1>
-                    <p>Fill in this form to create a task!</p>
-                    <label for="taskName"> <b>Task Name</b></label>
-                    <input type="text" placeholder="Enter Task Name" name="taskName" required><br><br>
+                    <h1 id = "title">New task</h1>
+                    <p>Fill in this form to create a new task:</p>
+                    <label for="taskName"> <b>Task title</b></label>
+                    <input type="text" id = "taskName" placeholder="Enter Task Name" name="taskName" required><br><br>
 
-                    <label for="taskDescription"> <b>Task Description</b></label>
-                    <input type="text" placeholder="Enter Task Description" name="taskDescription" required><br><br>
+                    <label for="taskDescription"> <b>Task description</b></label>
+                    <input type="text" id = "taskDescription" placeholder="Enter Task Description" name="taskDescription" required><br><br>
  
-                    <label for="assignMember"> <b>Assign Member</b></label>
-                    <select id="selectMember"name ="assignMember"></select>
-                    
-                    <br><br>
+                    <label for="assignMember"> <b>Assign to member</b></label>
+                    <select id="selectMember"  name ="assignMember"></select><br><br>
  
-                    <button type="submit" class="cancelbtn" onclick="openForm()">Cancel</button>
-                    <button type="submit" class="createbtn">Create task</button>
+                    <button type="button" class="cancelbtn" onclick="openForm()">Cancel</button>
+                    <button type="submit" class="createbtn" id = "editBtn">Create task</button>
                 </form>
+            </div>
         </body>
         <footer>
 
