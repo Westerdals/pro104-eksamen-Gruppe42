@@ -34,6 +34,8 @@ function openForm(){
     let usersEl = document.getElementById("circleOverview");
     // get users from local storage or if its null an empty array.
     let users = JSON.parse(window.localStorage.getItem("users")) || [];
+    // gets the select vale in create task
+    let memberOption = document.getElementById("selectMember");
     usersEl.innerHTML ="";
     // usersEl.innerHTML="<span>Show group members</span>";
     for(const user of users){
@@ -48,6 +50,8 @@ function openForm(){
       </div>
         <div class="circleTxt">${username}</div>
             </div>`;
+        // adds every name as a option when you create a task. 
+        memberOption.innerHTML += `<option value ="${username}">${username}</option>`
     }
     users = [];
   }
