@@ -27,9 +27,6 @@ function openForm(){
     
 }
 
-renderQuote();
-renderUserList();
-
 
   // the function that gets the users on the page. 
   function renderUserList() {
@@ -55,7 +52,7 @@ renderUserList();
     users = [];
   }
 // Render user in top right corner 
-  renderMyUser();
+
   function renderMyUser(){
       let myEL = document.getElementById("myPlantDiv");
       let myUser = JSON.parse(window.localStorage.getItem("loggedInUser")) || []
@@ -116,8 +113,8 @@ function renderToDo(){
             event.dataTransfer.setData("text/plain",event.target.id);  
         });
         
-        
-        const {taskName,taskDescription,assignMember,i} = task;
+  
+        const {taskName,taskDescription,assignMember} = task;
         taskEL.innerHTML =  `
         <div class="objectDiv" 
       >
@@ -260,5 +257,8 @@ function renderAll() {
   renderInProgress();
   renderToDo();
   renderCompleted();
+  renderQuote();  
+  renderUserList();
+  renderMyUser();
 
 }
