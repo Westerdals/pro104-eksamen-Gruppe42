@@ -47,7 +47,6 @@ function openForm(){
             </div>`;
       
       memberOption.innerHTML += `<option value ="${username}">${username}</option>`
-      console.log(username)
     }
     users = [];
 
@@ -76,12 +75,12 @@ function createTask(){
     const taskName = document.querySelector("[name = 'taskName']").value;
     const taskDescription = document.querySelector("[name = 'taskDescription']").value;
     const assignMember = document.querySelector("[name = 'assignMember']").value;
-    console.log(taskName,taskDescription,assignMember);
 
     const task = {taskName,taskDescription,assignMember}
     const taskList = JSON.parse(window.localStorage.getItem("toDoColumn")) || [];
     taskList.push(task);
     window.localStorage.setItem("toDoColumn",JSON.stringify(taskList));   
+    renderAll();
 }
 function renderToDo(){
     let tasksEL = document.getElementById("toDoColumn");
@@ -226,7 +225,6 @@ let index = 0;
         <br>
       </div>`;
       tasksEL.appendChild(taskEL);
-      
   }
 
 }
@@ -254,14 +252,43 @@ let index = 0;
 /*-------------------------------Feed --------------------------------------------*/
 
 function renderFeed(){
-  feedEl = document.getElementById("feedDiv")
+  toDoFeedEl = document.getElementById("toDoFeed")
   let loggedUser = JSON.parse(localStorage.getItem("loggedInUser"));
-  feedEl.innerHTML = loggedUser.username;
-  console.log(loggedUser.username);
-
+  toDoFeedEl.innerHTML = "";
   let toDoList = JSON.parse(localStorage.getItem("toDoColumn"));
-  console.log(toDoList);
+  let inProgList = JSON.parse(localStorage.getItem("inProgressColumn"));
 
+
+let userTasks = toDoList.filter(function(e){
+  return e.assignMember == loggedUser.username; 
+})
+  for(const userTask of userTasks){
+    toDoFeedEl.innerHTML += userTask.taskName + userTask.taskDescription;
+  }
+
+  let progLists = inProgList.filter(function(f){
+    return f.assignMember == loggedUser.username;
+  })
+  
+  let inProgDiv = document.getElementById("inProgFeed");
+  inProgDiv.innerHTML = "";
+  for(const progList of progLists){
+    inProgDiv.innerHTML += progList.taskName + progList.taskDescription;
+  }
+
+  let compDiv = document.getElementById("compFeed");
+  compDiv.innerHTML="";
+
+  let compTaskList = JSON.parse(localStorage.getItem("completedColumn"));
+  let compLists = compTaskList.filter(function(r){
+    return r.assignMember == loggedUser.username;
+  })
+
+  for(const compList of compLists){
+    compDiv.innerHTML = compList.taskName + compList.taskDescription;
+  }
+  
+  
 }
 
 
