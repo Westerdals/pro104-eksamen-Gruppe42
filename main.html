@@ -11,13 +11,22 @@
         <!-- header div containing circles with overview of every group member and their plants -->
         <header>
             <div id="headerDiv">
-                <div id="headerFunctionsDiv">
+                <div id="newMemberDiv">
                     <a href="index.html">
                         <div class="circleDiv">
                             <div id="newMemberC">
                                 <div id="plusIco">+</div>
                             </div>
-                            <div class="circleTxt">New member</div>
+                            <div class="circleTxt" onclick="openMember()">New member
+                                 <div class="member-popup" id="form">
+                                    <form class="member-container" onsubmit="">
+                                        <label for="memberkName"> <b>Member name</b></label>
+                                        <input type="text" id = "memberName" placeholder="Enter member name" name="memberName" required><br><br>
+                                        <button type="button" class="cancelbtn" onclick="()">Cancel</button>
+                                        <button type="submit" class="createbtn" id = "editBtn">Add member</button>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
                      </a>
                      
