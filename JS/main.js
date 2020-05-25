@@ -39,14 +39,46 @@ function renderQuote() {
       const {username} = user;
       const randomColor = user.randomColor;
       // sets the innerhtml to be the username and password.
-      usersEl.innerHTML += ` <div class="circleDiv">
-          <img class="deleteMemberBtn" src="images/deleteBtn.png">
-      <div class="headerCircles" Style="border: 2px solid ${randomColor};
-      ">
-      </div>
-        <div class="circleTxt">${username}</div>
-            </div>`;
+
+      circleDiv = document.createElement("div")
+      circleDiv.className= "circleDiv"
+      usersEl.appendChild(circleDiv);
+      circleDiv.innerHTML += `     
+         <div class="headerCircles" Style="border: 2px solid ${randomColor};">`
+      circleTxt = document.createElement("div");
+      circleTxt.innerHTML = username;
+      circleTxt.className ="circleTxt";
+      circleDiv.appendChild(circleTxt);
+
       
+      deleteMemberBtn = document.createElement("img");
+      deleteMemberBtn.className ="deleteMemberBtn";
+      deleteMemberBtn.src = "images/deleteBtn.png"
+      circleDiv.appendChild(deleteMemberBtn);
+
+      deleteMemberBtn.addEventListener("click",function(){
+        console.log(user)
+        let usersList = JSON.parse(localStorage.getItem("users"));
+        let index = usersList.findIndex(member=> {
+          if(username === member.username){
+            console.log("it works ");
+            return true;
+          }
+          return false;
+          console.log("wut")
+        });
+        console.log(index);
+        
+      let confirmed = confirm("do you want do delete : " + username + "??");
+      console.log(confirmed);
+      if(confirmed === true){
+        console.log("Task deleted:", usersList.splice(index, 1));
+        window.localStorage.setItem("users",JSON.stringify(usersList)); 
+        renderAll();
+      }
+      });
+
+
       memberOption.innerHTML += `<option value ="${username}">${username}</option>`
     }
     users = [];
@@ -74,7 +106,7 @@ function renderQuote() {
 
     switch(index){
       case 1:
-        document.getElementById("editBtn").innerHTML ="Edit";
+        document.getElementById("editBtn").innerHTML ="Save";
         document.getElementById("title").innerHTML ="Edit Task";
       break;
       default:
@@ -190,7 +222,7 @@ function renderColumns(){
       let edit = document.createElement("button");
       edit.type = "button";
       objectDiv.appendChild(edit);
-      edit.innerHTML ="Edit";
+      edit.innerHTML = "Edit";
       edit.addEventListener("click", function(){
         document.getElementById("taskName").value = task.taskName;
         document.getElementById("taskDescription").value = task.taskDescription;
@@ -266,34 +298,30 @@ function renderFeed(){
       case 1: 
       newFeedEl = document.createElement("div");
       feedDiv.appendChild(newFeedEl);
-      newFeedEl.innerHTML = `${JSON.parse(localStorage.getItem("loggedInUser")).username} have been assigned to a new task`
+      newFeedEl.innerHTML = `<div class="feedEl">•  <i>${JSON.parse(localStorage.getItem("loggedInUser")).username} have been assigned to a new task </i></div>`
       break;
       case 2: 
       newFeedEl = document.createElement("div");
       feedDiv.appendChild(newFeedEl);
       if(feedColumn === "toDoColumn"){
         feedColumn = "To Do"
-        feedDiv.insertAdjacentElement("afterbegin",newFeedEl)
-        newFeedEl.innerHTML += `${JSON.parse(localStorage.getItem("loggedInUser")).username} have just moved ${feedValues} 
-        into ${feedColumn} `
+        newFeedEl.innerHTML += `<div class="feedEl">•  <i>${JSON.parse(localStorage.getItem("loggedInUser")).username} have just moved ${feedValues} 
+        into ${feedColumn} </i></div>`
       }else{
         if(feedColumn === "inProgressColumn"){
           feedColumn = "In Progress";
-          feedDiv.insertAdjacentElement("afterbegin",newFeedEl)
-          newFeedEl.innerHTML += `${JSON.parse(localStorage.getItem("loggedInUser")).username} Started working on ${feedValues}`
+          newFeedEl.innerHTML += `<div class="feedEl">•  <i>${JSON.parse(localStorage.getItem("loggedInUser")).username} Started working on ${feedValues} </i></div>`
         }else{
           feedColumn = "Completed";
-          feedDiv.insertAdjacentElement("afterbegin",newFeedEl)
-          newFeedEl.innerHTML += `${JSON.parse(localStorage.getItem("loggedInUser")).username} have just Completed ${feedValues}`
+          newFeedEl.innerHTML += `<div class="feedEl">•  <i>${JSON.parse(localStorage.getItem("loggedInUser")).username} have just Completed ${feedValues} </i></div>`
         }
       } break;
       case 3:
         newFeedEl = document.createElement("div");
         feedDiv.insertAdjacentElement("afterbegin",newFeedEl)
         feedDiv.appendChild(newFeedEl);
-        newFeedEl.innerHTML = `${JSON.parse(localStorage.getItem("loggedInUser")).username} have just deleted "${feedValues}"`
+        newFeedEl.innerHTML = `<div class="feedEl">•  <i>${JSON.parse(localStorage.getItem("loggedInUser")).username} have just deleted "${feedValues}" </i></div>`
         break;
-     
   }
 }
 /*
@@ -330,7 +358,6 @@ let userTasks = toDoList.filter(function(e){
   }
 }
 */
-
 renderAll();
 
 // added function to render everytask so its easier than to call functions. / or make a system to loop through different variants.

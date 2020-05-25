@@ -26,19 +26,6 @@ function createNewUser(event) {
         alert("passwords does not match")
     }else{
       
-      /*
-    console.log("this is")
-    // Passord må inneholde (?)
-    var passw =   /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}$/;
-    if(password.match(passw)) { 
-      console.log("congratz");
-    }
-    else { 
-        alert('Wrong...!');
-        return;
-    }
-*/
-
         //Pushes the new users into the array so it doesnt erase the previous one. 
         users.push(user);
         window.localStorage.setItem("users", JSON.stringify(users));
