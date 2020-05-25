@@ -1,0 +1,112 @@
+* {
+    margin: 0px 0px 0px 0px;
+}
+
+.container {
+    position: relative;
+    width: 1336px;
+    height: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+    background-color: #eee;
+}
+.return-btn {
+    width: 60px;
+    height: 50px;
+    margin-left: -150px;
+    position: absolute;
+}
+.plant-box {
+    width: 300px;
+    height: 700px;
+    margin-top: 50px;
+    margin-left: 200px;
+    background-color: #eeeeee;
+    border-radius: 150px;
+    position: absolute;
+}
+.plant-img {
+    padding: 50px 0;
+    text-align: center;
+    display: block;
+}
+.fact-box {
+    width: 200px;
+    height: 250px;
+    position: absolute;
+    margin-top: 500px;
+    margin-left: 50px;
+    background-color: #CCEB9D;
+    border-radius: 50px;
+    opacity: 0.7;
+    font-family: gopher, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+.factP {
+    padding: 40px 0;
+    text-align: center;
+    display: block;
+    position: absolute;
+}
+.progress {
+    width: 600px;
+    height: 600px;
+    margin-top: 100px;
+    margin-left: 700px;
+    border-radius: 70px;
+    background-color: dimgray;
+    
+}
+.box1 {
+    padding: 50px 0;
+    
+}
+.profile-name {
+    margin-left: 50px;
+    font-size: 40px;
+}
+.xp-bar {
+    width: 400px;
+    height: 40px;
+    margin-top: 10px;
+    margin-left: 50px;
+    background-color: dodgerblue;
+    border-radius: 20px;
+}
+.achievements {
+    width: 500px;
+    height: 350px;
+    margin-top: 50px;
+    margin-left: 50px;
+    border-radius: 30px;
+    background-color: azure;
+}
+.badge-1 {
+    width: 100px;
+    height: 100px;
+    background-color: #eeeeee;
+    margin-top: 35px;
+    margin-left: 50px;
+    border-radius: 50px;
+    position: absolute;
+}
+.badge-2 {
+    width: 100px;
+    height: 100px;
+    background-color: #000000;
+    margin-top: 35px;
+    margin-left: 200px;
+    border-radius: 50px;
+    position: absolute;
+}
+.badge-3 {
+     width: 100px;
+    height: 100px;
+    background-color: #D2FEC4;
+    margin-top: 35px;
+    margin-left: 350px;
+    border-radius: 50px;
+    position: absolute;
+}

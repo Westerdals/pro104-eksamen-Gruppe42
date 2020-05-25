@@ -133,6 +133,7 @@ h1 {
     left: 92%;
     top: 0px;
     border-bottom: 3px solid #4c794a;
+    cursor: pointer;
 }
 
 #myPlantCircle {
