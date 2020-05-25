@@ -218,16 +218,19 @@ let index = 0;
         
       const {taskName,taskDescription,assignMember} = task;
       taskEL.innerHTML =  `
-      <div class="objectDiv" 
-      >
-        <div>
-          <strong>Task:</strong> ${taskName}
-          <br>
-          <strong>Description:</strong> <br><p>${taskDescription}</p>
+        <div class="objectDiv" 
+        >
+          <div class="taskWrapper">
+            <div>
+              <strong>Task:</strong> ${taskName}
+              <br>
+              <strong>Description:</strong> <br><p>${taskDescription}</p>
+            </div>
+            <br><strong>Responsibility:</strong> <i> ${assignMember}</i>
+            <br>
+          <div>
         </div>
-        <br><strong>Responsibility:</strong> <i> ${assignMember}</i>
-        <br>
-      </div>`;
+      `;
       tasksEL.appendChild(taskEL);
       
   }
