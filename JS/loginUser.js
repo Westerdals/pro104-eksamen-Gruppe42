@@ -24,8 +24,6 @@ function loginUser(event) {
                 alert("incorrect username or password, please try again.");
             }
 
-        }else {
-            console.log("couldnt find username. ");
         }
     }
     
