@@ -2,7 +2,7 @@
     margin: 0px 0px 0px 0px;
 }
 
-.container {
+#container {
     position: relative;
     width: 1336px;
     height: 700px;
@@ -12,8 +12,8 @@
     background-color: #eee;
     z-index: 1;
 }
-.background-h1 {
-    margin-top: 560px;
+#background-h1 {
+    margin-top: 460px;
     margin-left: 10px;
     font-size: 150px;
     position: absolute;
@@ -37,7 +37,26 @@
     border: 2px solid lightgray;
     font-family: Arial, Helvetica, sans-serif;
 }
-.plant-box {
+
+#logOutBtn {
+    position: absolute;
+    width: 200px;
+    height: 20px;
+    left: 653px;
+    top: 230px;
+    background-color: #CCEB9D;
+    border-radius: 5px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 5px;
+    color: gray;
+}
+
+#logOutBtn:hover {
+    opacity: 0.8;
+}
+
+#plant-box {
     width: 300px;
     height: 700px;
     margin-top: 10px;
@@ -45,13 +64,13 @@
     border-radius: 150px;
     position: absolute;
 }
-.plant-img {
+#plant-img {
     padding: 50px 0;
     text-align: center;
     display: block;
     z-index: 2;
 }
-.fact-box {
+#fact-box {
     width: 500px;
     height: 260px;
     position: absolute;
@@ -65,12 +84,12 @@
     font-style: normal;
     z-index: 3;
 }
-.factP {
+#factP {
     padding: 20px 20px;
     position: absolute;
     z-index: 4;
 }
-.progress {
+#progress {
     width: 670px;
     height: 550px;
     margin-top: 70px;
@@ -81,7 +100,7 @@
     z-index: 7;
     
 }
-.box1 {
+#box1 {
     padding: 50px 0;
     
 }
@@ -91,13 +110,4 @@
     font-family: bungee, sans-serif;
     font-weight: 400;
     font-style: normal;
-}
-
-.achievements {
-    width: 500px;
-    height: 350px;
-    margin-top: 50px;
-    margin-left: 50px;
-    border-radius: 30px;
-    background-color: azure;
 }
