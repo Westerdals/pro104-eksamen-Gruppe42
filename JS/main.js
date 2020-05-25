@@ -269,28 +269,28 @@ function renderFeed(){
       case 1: 
       newFeedEl = document.createElement("div");
       feedDiv.appendChild(newFeedEl);
-      newFeedEl.innerHTML = `${JSON.parse(localStorage.getItem("loggedInUser")).username} have been assigned to a new task`
+      newFeedEl.innerHTML = `<div class="feedEl">•  <i>${JSON.parse(localStorage.getItem("loggedInUser")).username} have been assigned to a new task </i></div>`
       break;
       case 2: 
       newFeedEl = document.createElement("div");
       feedDiv.appendChild(newFeedEl);
       if(feedColumn === "toDoColumn"){
         feedColumn = "To Do"
-        newFeedEl.innerHTML += `${JSON.parse(localStorage.getItem("loggedInUser")).username} have just moved ${feedValues} 
-        into ${feedColumn} `
+        newFeedEl.innerHTML += `<div class="feedEl">•  <i>${JSON.parse(localStorage.getItem("loggedInUser")).username} have just moved ${feedValues} 
+        into ${feedColumn} </i></div>`
       }else{
         if(feedColumn === "inProgressColumn"){
           feedColumn = "In Progress";
-          newFeedEl.innerHTML += `${JSON.parse(localStorage.getItem("loggedInUser")).username} Started working on ${feedValues}`
+          newFeedEl.innerHTML += `<div class="feedEl">•  <i>${JSON.parse(localStorage.getItem("loggedInUser")).username} Started working on ${feedValues} </i></div>`
         }else{
           feedColumn = "Completed";
-          newFeedEl.innerHTML += `${JSON.parse(localStorage.getItem("loggedInUser")).username} have just Completed ${feedValues}`
+          newFeedEl.innerHTML += `<div class="feedEl">•  <i>${JSON.parse(localStorage.getItem("loggedInUser")).username} have just Completed ${feedValues} </i></div>`
         }
       } break;
       case 3:
         newFeedEl = document.createElement("div");
         feedDiv.appendChild(newFeedEl);
-        newFeedEl.innerHTML = `${JSON.parse(localStorage.getItem("loggedInUser")).username} have just deleted "${feedValues}"`
+        newFeedEl.innerHTML = `<div class="feedEl">•  <i>${JSON.parse(localStorage.getItem("loggedInUser")).username} have just deleted "${feedValues}" </i></div>`
         break;
      
   }

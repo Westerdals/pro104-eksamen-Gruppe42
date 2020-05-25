@@ -209,7 +209,7 @@ h1 {
     margin-left: 20px;
     margin-right: 5px;
     width: 290px;
-    height: 500px;
+    height: 485px;
     display: inline-block;
     overflow-y: scroll;
     overflow-x: hidden;
@@ -232,15 +232,32 @@ h1 {
 
     #feedDiv {
         position: absolute;
-        right: 20px;
-        top: 210px;
+        margin-left: 1010px;
+        margin-top: 210px;
+        border-radius: 2px;
         width: 300px;
-        height: 500px;
+        height: 370px;
+        overflow-y: scroll;
+        overflow-x: hide;
         background-color: #87AB98;
         font-weight: 200;
         border: 2px solid #4c794a;
-        z-index: -1;
     }
+
+    .feedEl {
+        position: relative;
+        border-radius: 10px;
+        background-color: white;
+        padding: 5px;
+        padding-top: 8px;
+        padding-left: 10px;
+        margin: 5px;
+        width: 270px;
+        font-size: 12px;
+        font-family: Arial, Helvetica, sans-serif;
+        height: 20px;
+    }
+    
 
 .open-button{
     position: absolute;
