@@ -22,27 +22,7 @@ let randomNr = Math.floor(Math.random()* quoteArray.length);
 function renderQuote() {
     quoteDiv.innerHTML = `<i><q>${quoteArray[randomNr]}</q></i>`;
 }
-
-function openForm(index){
-
-  switch(index){
-    case 1:
-      document.getElementById("editBtn").innerHTML ="Edit";
-      document.getElementById("title").innerHTML ="Edit Task";
-    break;
-    default:
-      document.getElementById("editBtn").innerHTML ="Create task";
-      document.getElementById("title").innerHTML ="New task";
-
-
-  }
-    if(document.getElementById("form").style.display === "block"){
-        document.getElementById("form").style.display = "none";
-    }else{
-        document.getElementById("form").style.display = "block";
-    }
-
-  }    
+  
   function renderUserList() {
     // Link to a div in the html file.
     let usersEl = document.getElementById("circleOverview");
@@ -50,6 +30,7 @@ function openForm(index){
     let users = JSON.parse(window.localStorage.getItem("users")) || [];
     // gets the select vale in create task
     let memberOption = document.getElementById("selectMember");
+    memberOption.innerHTML = "";
     usersEl.innerHTML ="";
     // usersEl.innerHTML="<span>Show group members</span>";
     for(const user of users){
@@ -87,39 +68,56 @@ function openForm(index){
             </div>`;
 
   }
+
+  function openForm(index){
+
+    switch(index){
+      case 1:
+        document.getElementById("editBtn").innerHTML ="Edit";
+        document.getElementById("title").innerHTML ="Edit Task";
+      break;
+      default:
+        document.getElementById("editBtn").innerHTML ="Create task";
+        document.getElementById("title").innerHTML ="New task";
+        document.getElementById("taskName").value = null;
+        document.getElementById("taskDescription").value = null;
+      break;
+  
+    }
+      if(document.getElementById("form").style.display === "block"){
+          document.getElementById("form").style.display = "none";
+      }else{
+          document.getElementById("form").style.display = "block";
+      }
+  
+    }  
 function createTask(){
-event.preventDefault();
-console.log(document.getElementById("title").innerHTML);
+
   if(document.getElementById("title").innerHTML === "New task"){
+    console.log("thisss")
       //resets the value when you create a task.
-      document.getElementById("taskName").value;
-      document.getElementById("taskDescription").value;
-      document.getElementById("selectMember").value;
-      document.getElementById("form").style.display = "none";
-      
+      event.preventDefault();
       const taskName = document.querySelector("[name = 'taskName']").value;
       const taskDescription = document.querySelector("[name = 'taskDescription']").value;
       const assignMember = document.querySelector("[name = 'assignMember']").value;
-
       const task = {taskName,taskDescription,assignMember}
+
+      document.getElementById("form").style.display = "none";
       const taskList = JSON.parse(window.localStorage.getItem("toDoColumn")) || [];
       taskList.push(task);
       window.localStorage.setItem("toDoColumn",JSON.stringify(taskList));  
-      feedSwitch = 1; 
-      renderAll();
+ 
   }else{ // this is the edit version. 
-      document.getElementById("form").style.display = "none";
-      const taskName = document.querySelector("[name = 'taskName']").value;
-      const taskDescription = document.querySelector("[name = 'taskDescription']").value;
-      const assignMember = document.querySelector("[name = 'assignMember']").value;
-      const task = {taskName,taskDescription,assignMember};
-
-      let tempTaskName = tempTask.taskName;
-      let tempTaskDescription = tempTask.taskDescription;
-
+    event.preventDefault();
+    const taskName = document.querySelector("[name = 'taskName']").value;
+    const taskDescription = document.querySelector("[name = 'taskDescription']").value;
+    const assignMember = document.querySelector("[name = 'assignMember']").value;
+    const task = {taskName,taskDescription,assignMember}
       const taskList = JSON.parse(window.localStorage.getItem(editTaskId)) || [];
+      // finds the previous value and removes it from localstorage. 
       let index = taskList.findIndex(preEdit=> {
-        if(preEdit.taskName === tempTaskName && preEdit.taskDescription === tempTaskDescription){
+        if(taskName === preEdit.taskName  && taskDescription === preEdit.taskDescription){
+          console.log("it works ");
           return true;
         }
         return false;
@@ -127,21 +125,22 @@ console.log(document.getElementById("title").innerHTML);
       // do not remove this console.log it both shows and applies the .splice. 
       console.log("Task deleted:", taskList.splice(index, 1));
       taskList.push(task);
-      window.localStorage.setItem(editTaskId,JSON.stringify(taskList));  
-      feedSwitch = 1; 
-      renderAll();
-
+      window.localStorage.setItem(editTaskId,JSON.stringify(taskList)); 
+      openForm();
   }
-  
+  feedSwitch = 1; 
+  renderAll();
 }
-//adds two eventlisters to new tasks so you can drag and drop + edit the value. 
-function addEventListeners(task,tasksEl,taskEL){
 
-  taskEL.addEventListener("dragstart",event =>{
+
+//adds two eventlisters to new tasks so you can drag and drop + edit the value. 
+function addEventListeners(task,tasksEl,taskEl){
+
+  taskEl.addEventListener("dragstart",event =>{
     data= task;
     // store the values to check them against the array to find position
-   
-    // gets the list from localstorage- uses "event.currentarget." to be able to use it in all 3 columns. since we store the value with that tag.
+    // gets the list from localstorage- uses "event.currentarget.id" to be able to use it in all 3 columns. since we store the value with that tag.
+    //so we can use it in multiple places and scale it. 
     let storedValues =  JSON.parse(localStorage.getItem(event.currentTarget.parentElement.id))
     // loops through the array and finds the first value that fit both taskname and taskdescription, can also add teammember
     // but since its more likely you have a taskname that is common and taskdescription is different teammember becomes redundant. 
@@ -161,42 +160,80 @@ function addEventListeners(task,tasksEl,taskEL){
     event.dataTransfer.setData("text/plain",event.target.id);
 
   });
-  taskEL.addEventListener("click", function(){
-    document.getElementById("taskName").value = task.taskName;
-    document.getElementById("taskDescription").value = task.taskDescription;
-    document.getElementById("selectMember").value = task.assignMember;
-    editTaskId = this.parentElement.id
-    tempTask = task;
-    openForm(1);
+ 
+}
+
+function renderColumns(){
+  lists = document.querySelectorAll(".progressColumns");
+  lists.forEach(element => {
+    let tasksEl = document.getElementById(element.id);
+    tasksEl.innerHTML = "";
+    let tasksList = JSON.parse(window.localStorage.getItem(element.id)) || [];
+    for(const task of tasksList){
+
+      const taskEl = document.createElement("div");
+      taskEl.draggable = true;
+      addEventListeners(task,tasksEl,taskEl);
+      const {taskName,taskDescription,assignMember} = task;
+      let objectDiv = document.createElement("div");
+      taskEl.appendChild(objectDiv);
+      objectDiv.className = "objectDiv";
+      objectDiv.innerHTML =  `
+      <div>
+        <strong>Task:</strong> ${taskName}
+        <br>
+        <strong>Description:</strong> <br><p>${taskDescription}</p>
+      </div>
+      <br><strong>Responsibility:</strong> <i> ${assignMember}</i>
+      <br>
+      `;
+      let edit = document.createElement("button");
+      edit.type = "button";
+      objectDiv.appendChild(edit);
+      edit.innerHTML ="Edit";
+      edit.addEventListener("click", function(){
+        document.getElementById("taskName").value = task.taskName;
+        document.getElementById("taskDescription").value = task.taskDescription;
+        document.getElementById("selectMember").value = task.assignMember;
+        editTaskId = this.parentElement.parentElement.parentElement.id;
+        tempTask = task;
+        openForm(1);
+
+  });
+
+  let deleted = document.createElement("button");
+  deleted.type = "button";
+  objectDiv.appendChild(deleted);
+  deleted.innerHTML ="Delete";
+  deleted.addEventListener("click", function(){
+    
+    let tempTaskName = task.taskName;
+    let tempTaskDescription = task.taskDescription;
+    const taskList = JSON.parse(window.localStorage.getItem(element.id)) || [];
+    // finds the previous value and removes it from localstorage. 
+    let index = taskList.findIndex(preEdit=> {
+      if(tempTaskName === preEdit.taskName && tempTaskDescription === preEdit.taskDescription){
+        console.log("hurrray");
+        return true;
+      }
+      return false;
+    });
+          // do not remove this console.log it both shows and applies the .splice. 
+    console.log("Task deleted:", taskList.splice(index, 1));
+    window.localStorage.setItem(element.id,JSON.stringify(taskList));  
+    feedValues = task.taskName;
+    feedSwitch = 3;
+    taskEl.remove();
+    renderAll();
+});
+
+  objectDiv.insertAdjacentElement("beforeend",edit)
+      tasksEl.appendChild(taskEl);
+    }
   });
 }
-function renderColumns(){
-     lists = document.querySelectorAll(".progressColumns");
-     lists.forEach(element => {
-       let tasksEl = document.getElementById(element.id);
-       tasksEl.innerHTML = "";
-       let tasksList = JSON.parse(window.localStorage.getItem(element.id)) || [];
-       for(const task of tasksList){
 
-         const taskEl = document.createElement("div");
-         taskEl.draggable = true;
-         addEventListeners(task,tasksEl,taskEl);
-         const {taskName,taskDescription,assignMember} = task;
-         taskEl.innerHTML =  `
-         <div class="objectDiv">
-         <div>
-           <strong>Task:</strong> ${taskName}
-           <br>
-           <strong>Description:</strong> <br><p>${taskDescription}</p>
-         </div>
-         <br><strong>Responsibility:</strong> <i> ${assignMember}</i>
-         <br>
-         <button type ="button" class ="editButton">Edit</button>
-       </div>`;
-         tasksEl.appendChild(taskEl);
-       }
-     });
-}
+
 
   function dragover_handler(event){
     event.preventDefault();
@@ -226,7 +263,7 @@ function renderFeed(){
     default:
       newFeedEl = document.createElement("div");
       feedDiv.appendChild(newFeedEl);
-      newFeedEl.innerHTML= " this is the default value you idiot";
+      newFeedEl.innerHTML= "";
       break;
       case 1: 
       newFeedEl = document.createElement("div");
@@ -248,7 +285,12 @@ function renderFeed(){
           feedColumn = "Completed";
           newFeedEl.innerHTML += `${JSON.parse(localStorage.getItem("loggedInUser")).username} have just Completed ${feedValues}`
         }
-      }
+      } break;
+      case 3:
+        newFeedEl = document.createElement("div");
+        feedDiv.appendChild(newFeedEl);
+        newFeedEl.innerHTML = `${JSON.parse(localStorage.getItem("loggedInUser")).username} have just deleted "${feedValues}"`
+        break;
      
   }
 }
@@ -302,10 +344,14 @@ function editTask(){
   feedSwitch = 0; 
   renderAll();
 }
+
+
+
 renderAll();
 
-// added function to render everytask so its easier than to call  functions. / or make a system to loop through different variants.
+// added function to render everytask so its easier than to call functions. / or make a system to loop through different variants.
 function renderAll() {
+  console.log("render")
   renderColumns();
   renderMyUser();
   renderQuote();

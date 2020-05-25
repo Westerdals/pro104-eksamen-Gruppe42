@@ -322,7 +322,3 @@ h1 {
 .objectDiv:hover {
     cursor: grab;
 }
-
-#formEdit{
-    display: none;
-}
