@@ -1,7 +1,7 @@
 * {
   margin: 0px 0px 0px 0px;
 }
-.container {
+#container {
   position: relative;
   width: 1336px;
   height: 700px;
@@ -11,14 +11,14 @@
   background-color: #eee;
 }
 
-.background-img {
+#background-img {
   width: 1366px;
   height: 688px;
   z-index: 0;
   position: absolute;
 }
 
-.banner{
+#banner{
   display: inline-flex;
   margin-top: 10px;
   margin-left: 30px;
@@ -26,7 +26,7 @@
   z-index: 1;
   
 }
-.logo{
+#logo{
   width: 100px;
   height: 100px;
   margin-top: 30px;
@@ -34,7 +34,7 @@
   position: absolute;
   display: inline-flex;
 }
-.inspire{
+#inspire{
   margin-top: -40px;
   margin-left: 200px;
   font-size: 100px;
@@ -43,31 +43,31 @@
   font-weight: 400;
   font-style: normal;
 }
-.spire {
+#spire {
   font-family: bungee, sans-serif;
   font-weight: 400;
   font-style: normal;
   color: #87AB98;
 }
-.info {
+#info {
   margin-top: 350px;
   margin-left: 100px;
   position: absolute;
   
 }
-.infoBox {
+#infoBox {
   width: 500px;
   height: 380px;
   border-radius: 20px;
   background-color: #eee;
   opacity: 0.95;
 }
-.aboutUs {
+#aboutUs {
   padding-top: 50px;
   padding-left: 50px;
   padding-right: 50px;
 }
-.welcome {
+#welcomeTxt {
   margin-top: 77px;
   margin-left: 890px;
   z-index: 1;
