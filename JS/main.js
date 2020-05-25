@@ -29,7 +29,36 @@ let randomNr = Math.floor(Math.random()* quoteArray.length);
 function renderQuote() {
     quoteDiv.innerHTML = `<i><q>${quoteArray[randomNr]}</q></i>`;
 }
+
+function openMemberTask(){
+  console.log("helaskdjlaskldjskjløsdakj")
+  if(document.getElementById("memberForm").style.display === "block"){
+    document.getElementById("memberForm").style.display = "none";
+}else{
+    document.getElementById("memberForm").style.display = "block";
+}
+}
+  function newMember(){
+    generateRandomColor();
+    username = document.getElementById("memberName").value;
+    let users = JSON.parse(window.localStorage.getItem("users")) || [];
+    const user = { username,randomColor};
+    users.push(user);
+    window.localStorage.setItem("users", JSON.stringify(users));
+    
+    function generateRandomColor() {
+      var r = Math.floor(Math.random()*256);
+      var b = Math.floor(Math.random()*256);
+      var g = Math.floor(Math.random()*256);
+      randomColor =  `rgb(${r}, ${b}, ${g})`;
+    }
+    renderAll();
+    openMemberTask();
+  }
+
+
   
+
   function renderUserList() {
     // Link to a div in the html file.
     let usersEl = document.getElementById("circleOverview");
