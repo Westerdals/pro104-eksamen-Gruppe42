@@ -96,6 +96,20 @@ h1 {
     cursor: pointer;
 }
 
+.deleteMemberBtn {
+    position: absolute;
+    width: 20px;
+    left: 67px;
+    top: 6px;
+    z-index: 4;
+    opacity: 0;
+}
+
+.deleteMemberBtn:hover {
+    opacity: 1;
+    cursor: pointer;
+}
+
 
 
 #plusIco {

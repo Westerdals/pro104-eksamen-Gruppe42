@@ -40,6 +40,7 @@ function renderQuote() {
       const randomColor = user.randomColor;
       // sets the innerhtml to be the username and password.
       usersEl.innerHTML += ` <div class="circleDiv">
+          <img class="deleteMemberBtn" src="images/deleteBtn.png">
       <div class="headerCircles" Style="border: 2px solid ${randomColor};
       ">
       </div>
