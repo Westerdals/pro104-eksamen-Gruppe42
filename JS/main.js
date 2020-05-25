@@ -244,7 +244,7 @@ function addEventListeners(task,tasksEl,taskEl){
 taskEl.addEventListener("dragstart",event =>{
     data= task;
     // store the values to check them against the array to find position
-    // gets the list from localstorage- uses "event.currentarget.id" to be able to use it in all 3 columns. since we store the value with that tag.
+    // gets the list from localstorage uses "event.currentarget.id" to be able to use it in all 3 columns. since we store the value with that tag.
     //so we can use it in multiple places and scale it. 
     let storedValues =  JSON.parse(localStorage.getItem(event.currentTarget.parentElement.id))
     // loops through the array and finds the first value that fit both taskname and taskdescription, can also add teammember
@@ -360,7 +360,7 @@ function renderColumns(){
 
 function renderFeed(){
 
-  
+
   feedDiv = document.getElementById("feedDiv");
   switch(feedSwitch) {
     default:
