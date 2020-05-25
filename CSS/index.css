@@ -96,6 +96,7 @@
   margin-top: 100px;
   margin-left: 30px;
   border-radius: 20px;
+  padding-left: 10px;
 }
 #passwordLogin {
   height: 50px;
@@ -103,22 +104,24 @@
   margin-top: 10px;
   margin-left: 30px;
   border-radius: 20px;
+  padding-left: 10px;
 }
 #submitLogin {
-  width: 60px;
+  width: 410px;
   height: 40px;
   margin-top: 10px;
-  margin-left: 40px;
+  margin-left: 34px;
   border-radius: 5px;
   opacity: 0.7;
   border-style: none;
-  background-color: #87AB98;
-  font-size: 20px;
+  background-color: white;
+  font-size: 18px;
+  cursor: pointer;
 }
 .collapsible {
   margin-top: 380px;
   margin-left: 840px;
-  background-color: #777;
+  background-color: #87AB98;
   color: white;
   cursor: pointer;
   width: 204px;
@@ -136,14 +139,17 @@
 }
 
 .content {
-    margin-left: 820px;
-    margin-top: 410px;
-    border-radius: 20px;
+    margin-left: 840px;
+    margin-top: 420px;
+    border-radius: 10px;
     position: absolute;
     max-height: 0;
+    padding-left: 10px;
+    padding-right: 10px;
     overflow: hidden;
     transition: max-height 0.2s ease-out;
     background-color: #eee;
+    font-family: Arial, Helvetica, sans-serif;
 } 
 .createMemberP {
   font-size: 20px;
@@ -151,20 +157,20 @@
 
 }
 .passwordTitle {
-  font-size: 20px;
+  font-size: 12px;
 }
 #message {
-    margin-left: 10px;
+  margin-left: 10px;
   display:inline block;
   background: #eee;
   color: #000;
   position: relative;
-  font-size: 20px;
+  font-size: 12px;
   
 }
 
 #message p {
-    font-size: 20px;
+    font-size: 12px;
 }
 #letter {
   margin-top: 5px;
