@@ -12,14 +12,13 @@
         <header>
             <div id="headerDiv">
                 <div id="headerFunctionsDiv">
-                    <a href="index.html">
-                        <div class="circleDiv">
+                        <div class="circleDiv" onclick="openMemberTask()">
                             <div id="newMemberC">
                                 <div id="plusIco">+</div>
+                                
                             </div>
                             <div class="circleTxt">New member</div>
                         </div>
-                     </a>
                      <div class="circleDiv">
                         <div id="viewAllC" onclick="renderAll(event)">
                         </div>
@@ -53,13 +52,10 @@
                 <div id="progressBoard">
                     <div id="toDoColumn" class="progressColumns"
                     ondrop="drop_handler(event);" ondragover="dragover_handler(event);" >
-                       
                         <div></div>
                     </div>
                     <div id="inProgressColumn" class="progressColumns" style="left: 300px;"
-                    ondrop="drop_handler(event);" ondragover="dragover_handler(event);"
-                    >
-                        
+                    ondrop="drop_handler(event);" ondragover="dragover_handler(event);">
                     </div>
                     <div id="completedColumn" class="progressColumns" style="left: 600px;"
                     ondrop="drop_handler(event);" ondragover="dragover_handler(event);">
@@ -71,10 +67,18 @@
             <div id="feedDiv">
                 
             </div>
-
+            <div class="form-popup" id="memberForm">
+                    <h1 id = "title">New task</h1>
+                    <p>Fill in this form to create a new member</p>
+                    <label for="memberName"> <b>Name</b></label>
+                    <input type="text" id = "memberName" 
+                     placeholder="Enter name" name="memberName" required><br><br>
+                    <button type="button" class="cancelbtn" onclick="(openMemberTask())">Cancel</button>
+                    <button type="submit" class="createbtn" id = "memberBtn" onclick="(newMember())">Create Member</button>
+            </div>
+            
             <button class="open-button" onclick="openForm()">Create Task</button>
             <div class="form-popup" id="form">
-            
                 <form class="form-container" onsubmit="createTask(event)">
                     <h1 id = "title">New task</h1>
                     <p>Fill in this form to create a new task:</p>
@@ -90,6 +94,8 @@
                     <button type="button" class="cancelbtn" onclick="openForm()">Cancel</button>
                     <button type="submit" class="createbtn" id = "editBtn">Create task</button>
                 </form>
+
+
             </div>
         </body>
         <footer>
