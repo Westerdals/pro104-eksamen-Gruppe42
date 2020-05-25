@@ -119,6 +119,7 @@ h1 {
     font-size: 30px;
     color: #b6b6b6;
     font-weight: 300;
+    z-index: 100;
 }
 
 /* My plant */

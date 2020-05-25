@@ -39,14 +39,46 @@ function renderQuote() {
       const {username} = user;
       const randomColor = user.randomColor;
       // sets the innerhtml to be the username and password.
-      usersEl.innerHTML += ` <div class="circleDiv">
-          <img class="deleteMemberBtn" src="images/deleteBtn.png">
-      <div class="headerCircles" Style="border: 2px solid ${randomColor};
-      ">
-      </div>
-        <div class="circleTxt">${username}</div>
-            </div>`;
+
+      circleDiv = document.createElement("div")
+      circleDiv.className= "circleDiv"
+      usersEl.appendChild(circleDiv);
+      circleDiv.innerHTML += `     
+         <div class="headerCircles" Style="border: 2px solid ${randomColor};">`
+      circleTxt = document.createElement("div");
+      circleTxt.innerHTML = username;
+      circleTxt.className ="circleTxt";
+      circleDiv.appendChild(circleTxt);
+
       
+      deleteMemberBtn = document.createElement("img");
+      deleteMemberBtn.className ="deleteMemberBtn";
+      deleteMemberBtn.src = "images/deleteBtn.png"
+      circleDiv.appendChild(deleteMemberBtn);
+
+      deleteMemberBtn.addEventListener("click",function(){
+        console.log(user)
+        let usersList = JSON.parse(localStorage.getItem("users"));
+        let index = usersList.findIndex(member=> {
+          if(username === member.username){
+            console.log("it works ");
+            return true;
+          }
+          return false;
+          console.log("wut")
+        });
+        console.log(index);
+        
+      let confirmed = confirm("do you want do delete : " + username + "??");
+      console.log(confirmed);
+      if(confirmed === true){
+        console.log("Task deleted:", usersList.splice(index, 1));
+        window.localStorage.setItem("users",JSON.stringify(usersList)); 
+        renderAll();
+      }
+      });
+
+
       memberOption.innerHTML += `<option value ="${username}">${username}</option>`
     }
     users = [];
@@ -136,8 +168,7 @@ function createTask(){
 
 //adds two eventlisters to new tasks so you can drag and drop + edit the value. 
 function addEventListeners(task,tasksEl,taskEl){
-
-  taskEl.addEventListener("dragstart",event =>{
+taskEl.addEventListener("dragstart",event =>{
     data= task;
     // store the values to check them against the array to find position
     // gets the list from localstorage- uses "event.currentarget.id" to be able to use it in all 3 columns. since we store the value with that tag.
@@ -214,7 +245,6 @@ function renderColumns(){
     // finds the previous value and removes it from localstorage. 
     let index = taskList.findIndex(preEdit=> {
       if(tempTaskName === preEdit.taskName && tempTaskDescription === preEdit.taskDescription){
-        console.log("hurrray");
         return true;
       }
       return false;
@@ -259,7 +289,6 @@ function renderColumns(){
 
 function renderFeed(){
   feedDiv = document.getElementById("feedDiv");
-
   switch(feedSwitch) {
     default:
       newFeedEl = document.createElement("div");
@@ -289,10 +318,10 @@ function renderFeed(){
       } break;
       case 3:
         newFeedEl = document.createElement("div");
+        feedDiv.insertAdjacentElement("afterbegin",newFeedEl)
         feedDiv.appendChild(newFeedEl);
         newFeedEl.innerHTML = `<div class="feedEl">•  <i>${JSON.parse(localStorage.getItem("loggedInUser")).username} deleted "${feedValues}" </i></div>`
         break;
-     
   }
 }
 /*
@@ -328,26 +357,7 @@ let userTasks = toDoList.filter(function(e){
     compDiv.innerHTML = compList.taskName + compList.taskDescription;
   }
 }
-
 */
-function editTask(){
-  event.preventDefault();
-  document.getElementById("form").style.display = "none";
-  console.log(event.currentTarget.id);
-  const taskName = document.querySelector("[name = 'taskNameEdit']").value;
-  const taskDescription = document.querySelector("[name = 'taskDescriptionEdit']").value;
-  const assignMember = document.querySelector("[name = 'assignMemberEdit']").value;
-
-  const task = {taskName,taskDescription,assignMember}
-  const taskList = JSON.parse(window.localStorage.getItem("toDoColumn"/*change this to event.currenttarget?*/)) || [];
-  taskList.push(task);/*and here*/
-  window.localStorage.setItem("toDoColumn",JSON.stringify(taskList));  /*same here ^^*/
-  feedSwitch = 0; 
-  renderAll();
-}
-
-
-
 renderAll();
 
 // added function to render everytask so its easier than to call functions. / or make a system to loop through different variants.
