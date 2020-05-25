@@ -191,7 +191,7 @@ function renderColumns(){
       let edit = document.createElement("button");
       edit.type = "button";
       objectDiv.appendChild(edit);
-      edit.innerHTML ="Edit";
+      edit.innerHTML = "Save";
       edit.addEventListener("click", function(){
         document.getElementById("taskName").value = task.taskName;
         document.getElementById("taskDescription").value = task.taskDescription;
