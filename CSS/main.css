@@ -62,6 +62,7 @@ h1 {
     height: 75px;
     border-radius: 50%;
     overflow: hidden;
+    cursor: pointer;
     
 } 
 .circleTxt {
