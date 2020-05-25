@@ -74,7 +74,7 @@ function renderQuote() {
 
     switch(index){
       case 1:
-        document.getElementById("editBtn").innerHTML ="Edit";
+        document.getElementById("editBtn").innerHTML ="Save";
         document.getElementById("title").innerHTML ="Edit Task";
       break;
       default:
@@ -191,7 +191,7 @@ function renderColumns(){
       let edit = document.createElement("button");
       edit.type = "button";
       objectDiv.appendChild(edit);
-      edit.innerHTML = "Save";
+      edit.innerHTML = "Edit";
       edit.addEventListener("click", function(){
         document.getElementById("taskName").value = task.taskName;
         document.getElementById("taskDescription").value = task.taskDescription;
