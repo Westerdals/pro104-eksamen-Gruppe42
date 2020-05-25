@@ -26,21 +26,20 @@ h1 {
     overflow: hidden;
 }
 
-#newMemberDiv {
+#headerFunctionsDiv {
     position: fixed; 
     left: auto;
     top: 0px;
-    width: 8%;
+    width: 16%;
     height: 120px;
-    border-bottom: 3px solid #4c794a;
     background-color: white;
 }
 
 #circleOverview {
     position: absolute;
     height: 120px;
-    width: 84%;
-    left: 8%;
+    width: 76%;
+    left: 16%;
     top: 0px;
     overflow-x: scroll;
     white-space: nowrap;
@@ -91,6 +90,22 @@ h1 {
     width: 75px;
     height: 75px;
     background-color: #eeeeee;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+#viewAllC {
+    position: relative;
+    display: inline-block;
+    left: 10px;
+    margin-right: 15px;
+    top: 8px;
+    border: 2px solid #b6b6b6;
+    width: 75px;
+    height: 75px;
+    background-image: url("../images/greenhouse.JPG");
+    background-size: 120px;
     border-radius: 50%;
     overflow: hidden;
     cursor: pointer;
