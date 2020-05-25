@@ -50,13 +50,88 @@ function renderQuote() {
       circleTxt.className ="circleTxt";
       circleDiv.appendChild(circleTxt);
 
-      
       deleteMemberBtn = document.createElement("img");
       deleteMemberBtn.className ="deleteMemberBtn";
       deleteMemberBtn.src = "images/deleteBtn.png"
-      circleDiv.appendChild(deleteMemberBtn);
 
-      deleteMemberBtn.addEventListener("click",function(){
+      circleDiv.appendChild(deleteMemberBtn);
+      circleDiv.addEventListener("click",function(){
+        console.log("hello");
+
+        toDoFeedEl = document.getElementById("toDoColumn")
+        let selectedUser = username;
+        toDoFeedEl.innerHTML = "";
+          
+  lists = document.querySelectorAll(".progressColumns");
+  lists.forEach(element => {
+    let tasksEl = document.getElementById(element.id);
+    tasksEl.innerHTML = "";
+    let tasksList = JSON.parse(window.localStorage.getItem(element.id)) || [];
+        let userTasks = tasksList.filter(function(e){
+          return e.assignMember == selectedUser;})
+    for(const task of userTasks){
+      const taskEl = document.createElement("div");
+      taskEl.draggable = true;
+      addEventListeners(task,tasksEl,taskEl);
+      const {taskName,taskDescription,assignMember} = task;
+      let objectDiv = document.createElement("div");
+      taskEl.appendChild(objectDiv);
+      objectDiv.className = "objectDiv";
+      objectDiv.innerHTML =  `
+      <div>
+        <strong>Task:</strong> ${taskName}
+        <br>
+        <strong>Description:</strong> <br><p>${taskDescription}</p>
+      </div>
+      <br><strong>Responsibility:</strong> <i> ${assignMember}</i>
+      <br>
+      `;
+      let edit = document.createElement("button");
+      edit.type = "button";
+      objectDiv.appendChild(edit);
+      edit.innerHTML = "Edit";
+      edit.addEventListener("click", function(){
+        document.getElementById("taskName").value = task.taskName;
+        document.getElementById("taskDescription").value = task.taskDescription;
+        document.getElementById("selectMember").value = task.assignMember;
+        editTaskId = this.parentElement.parentElement.parentElement.id;
+        tempTask = task;
+        openForm(1);
+
+  });
+
+  let deleted = document.createElement("button");
+  deleted.type = "button";
+  objectDiv.appendChild(deleted);
+  deleted.innerHTML ="Delete";
+  deleted.addEventListener("click", function(){
+    
+    let tempTaskName = task.taskName;
+    let tempTaskDescription = task.taskDescription;
+    const taskList = JSON.parse(window.localStorage.getItem(element.id)) || [];
+    // finds the previous value and removes it from localstorage. 
+    let index = taskList.findIndex(preEdit=> {
+      if(tempTaskName === preEdit.taskName && tempTaskDescription === preEdit.taskDescription){
+        return true;
+      }
+      return false;
+    });
+          // do not remove this console.log it both shows and applies the .splice. 
+    console.log("Task deleted:", taskList.splice(index, 1));
+    window.localStorage.setItem(element.id,JSON.stringify(taskList));  
+    feedValues = task.taskName;
+    feedSwitch = 3;
+    taskEl.remove();
+    renderAll();
+});
+
+  objectDiv.insertAdjacentElement("beforeend",edit)
+      tasksEl.appendChild(taskEl);
+    }
+  });
+  
+      });
+  deleteMemberBtn.addEventListener("click",function(){
         console.log(user)
         let usersList = JSON.parse(localStorage.getItem("users"));
         let index = usersList.findIndex(member=> {
@@ -76,7 +151,7 @@ function renderQuote() {
         window.localStorage.setItem("users",JSON.stringify(usersList)); 
         renderAll();
       }
-      });
+  });
 
 
       memberOption.innerHTML += `<option value ="${username}">${username}</option>`
@@ -99,11 +174,9 @@ function renderQuote() {
       </div>
         <div class="circleTxt">My profile</div>
             </div>`;
-
   }
 
   function openForm(index){
-
     switch(index){
       case 1:
         document.getElementById("editBtn").innerHTML ="Save";
@@ -127,7 +200,6 @@ function renderQuote() {
 function createTask(){
 
   if(document.getElementById("title").innerHTML === "New task"){
-    console.log("thisss")
       //resets the value when you create a task.
       event.preventDefault();
       const taskName = document.querySelector("[name = 'taskName']").value;
@@ -139,6 +211,7 @@ function createTask(){
       const taskList = JSON.parse(window.localStorage.getItem("toDoColumn")) || [];
       taskList.push(task);
       window.localStorage.setItem("toDoColumn",JSON.stringify(taskList));  
+      feedValues = assignMember;
  
   }else{ // this is the edit version. 
     event.preventDefault();
@@ -264,8 +337,6 @@ function renderColumns(){
   });
 }
 
-
-
   function dragover_handler(event){
     event.preventDefault();
   }
@@ -288,6 +359,8 @@ function renderColumns(){
 /*-------------------------------Feed --------------------------------------------*/
 
 function renderFeed(){
+
+  
   feedDiv = document.getElementById("feedDiv");
   switch(feedSwitch) {
     default:
@@ -298,7 +371,7 @@ function renderFeed(){
       case 1: 
       newFeedEl = document.createElement("div");
       feedDiv.appendChild(newFeedEl);
-      newFeedEl.innerHTML = `<div class="feedEl">•  <i>${JSON.parse(localStorage.getItem("loggedInUser")).username} have been assigned to a new task </i></div>`
+      newFeedEl.innerHTML = `<div class="feedEl">•  <i>${feedValues} have been assigned to a new task </i></div>`
       break;
       case 2: 
       newFeedEl = document.createElement("div");
@@ -324,40 +397,7 @@ function renderFeed(){
         break;
   }
 }
-/*
-// not in use currently. 
-function renderYourAssignedTasks(){
-  toDoFeedEl = document.getElementById("toDoFeed")
-  let loggedUser = JSON.parse(localStorage.getItem("loggedInUser"));
-  toDoFeedEl.innerHTML = "";
-  let toDoList = JSON.parse(localStorage.getItem("toDoColumn"));
-  let inProgList = JSON.parse(localStorage.getItem("inProgressColumn"));
 
-
-let userTasks = toDoList.filter(function(e){
-  return e.assignMember == loggedUser.username;})
-  for(const userTask of userTasks){
-    toDoFeedEl.innerHTML += userTask.taskName + userTask.taskDescription;
-  }
-
-  let progLists = inProgList.filter(function(f){
-    return f.assignMember == loggedUser.username;})
-  
-  let inProgDiv = document.getElementById("inProgFeed");
-  inProgDiv.innerHTML = "";
-  for(const progList of progLists){
-    inProgDiv.innerHTML += progList.taskName + progList.taskDescription;
-  }
-  let compDiv = document.getElementById("compFeed");
-  compDiv.innerHTML="";
-  let compTaskList = JSON.parse(localStorage.getItem("completedColumn"));
-  let compLists = compTaskList.filter(function(r){
-    return r.assignMember == loggedUser.username;})
-  for(const compList of compLists){
-    compDiv.innerHTML = compList.taskName + compList.taskDescription;
-  }
-}
-*/
 renderAll();
 
 // added function to render everytask so its easier than to call functions. / or make a system to loop through different variants.
