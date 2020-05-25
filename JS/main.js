@@ -136,8 +136,7 @@ function createTask(){
 
 //adds two eventlisters to new tasks so you can drag and drop + edit the value. 
 function addEventListeners(task,tasksEl,taskEl){
-
-  taskEl.addEventListener("dragstart",event =>{
+taskEl.addEventListener("dragstart",event =>{
     data= task;
     // store the values to check them against the array to find position
     // gets the list from localstorage- uses "event.currentarget.id" to be able to use it in all 3 columns. since we store the value with that tag.
@@ -214,7 +213,6 @@ function renderColumns(){
     // finds the previous value and removes it from localstorage. 
     let index = taskList.findIndex(preEdit=> {
       if(tempTaskName === preEdit.taskName && tempTaskDescription === preEdit.taskDescription){
-        console.log("hurrray");
         return true;
       }
       return false;
@@ -259,7 +257,6 @@ function renderColumns(){
 
 function renderFeed(){
   feedDiv = document.getElementById("feedDiv");
-
   switch(feedSwitch) {
     default:
       newFeedEl = document.createElement("div");
@@ -276,19 +273,23 @@ function renderFeed(){
       feedDiv.appendChild(newFeedEl);
       if(feedColumn === "toDoColumn"){
         feedColumn = "To Do"
+        feedDiv.insertAdjacentElement("afterbegin",newFeedEl)
         newFeedEl.innerHTML += `${JSON.parse(localStorage.getItem("loggedInUser")).username} have just moved ${feedValues} 
         into ${feedColumn} `
       }else{
         if(feedColumn === "inProgressColumn"){
           feedColumn = "In Progress";
+          feedDiv.insertAdjacentElement("afterbegin",newFeedEl)
           newFeedEl.innerHTML += `${JSON.parse(localStorage.getItem("loggedInUser")).username} Started working on ${feedValues}`
         }else{
           feedColumn = "Completed";
+          feedDiv.insertAdjacentElement("afterbegin",newFeedEl)
           newFeedEl.innerHTML += `${JSON.parse(localStorage.getItem("loggedInUser")).username} have just Completed ${feedValues}`
         }
       } break;
       case 3:
         newFeedEl = document.createElement("div");
+        feedDiv.insertAdjacentElement("afterbegin",newFeedEl)
         feedDiv.appendChild(newFeedEl);
         newFeedEl.innerHTML = `${JSON.parse(localStorage.getItem("loggedInUser")).username} have just deleted "${feedValues}"`
         break;
@@ -328,25 +329,7 @@ let userTasks = toDoList.filter(function(e){
     compDiv.innerHTML = compList.taskName + compList.taskDescription;
   }
 }
-
 */
-function editTask(){
-  event.preventDefault();
-  document.getElementById("form").style.display = "none";
-  console.log(event.currentTarget.id);
-  const taskName = document.querySelector("[name = 'taskNameEdit']").value;
-  const taskDescription = document.querySelector("[name = 'taskDescriptionEdit']").value;
-  const assignMember = document.querySelector("[name = 'assignMemberEdit']").value;
-
-  const task = {taskName,taskDescription,assignMember}
-  const taskList = JSON.parse(window.localStorage.getItem("toDoColumn"/*change this to event.currenttarget?*/)) || [];
-  taskList.push(task);/*and here*/
-  window.localStorage.setItem("toDoColumn",JSON.stringify(taskList));  /*same here ^^*/
-  feedSwitch = 0; 
-  renderAll();
-}
-
-
 
 renderAll();
 
