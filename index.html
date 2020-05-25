@@ -4,44 +4,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="CSS/index.css">
+    <link rel="stylesheet" href="https://use.typekit.net/cpn6dud.css">
     <title>Index/CreateUser</title>
 </head>
 <body>
-
-    <form id ="login" onsubmit = "loginUser(event)"> 
-        <div id="loginDiv">
-            <input id="usernameLogin" name="usernameLogin" type="text" placeholder="username" required>
-            <input id="passwordLogin" name="passwordLogin" type="password" placeholder="password" required>
-            <input id="submitLogin" type="submit">
+    
+    <div class="container">
+        
+        <div class="banner">
+                <img class="logo" src="images/logo-plante.png">
+                <h1 class="inspire">In<span class="spire">spire</span></h1>
         </div>
-        <script src="JS/loginUser.js"></script>
-    </form>
-    <button class="collapsible">Open Collapsible</button>
-<div class="content">
-
-    <form onsubmit = "createNewUser(event)">
-        <div id="createUserDiv">
-            <h4>Register new user</h4>
-            <input id="userNameInput" name="username" type="text" placeholder="username">
-            <input type="password" id="psw" name="psw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
-
-            <input id="passwordInput_2" name="password_2" type="password" placeholder="repeat password">
-            <input id="submitUserBtn" type="submit">
+            
+        <div class="background-img">
+            
+                <img class="plants" src="images/plant-background.png">
+                
         </div>
-    </form>
+        
+        <div class="info">
+            <div class="infoBox">
+                <p class="aboutUs">Together with our partners in Sumatra, we are reclaiming and restoring this land for wildlife. <br><br>Planting trees and maintaining them as they grow takes a lot of time, and employs a lot of people. To plant a rainforest tree seedling and nurture it until it’s a strong adult tree costs around £5, so to plant several hectares quickly adds up.</p>
+            
+            </div>
+                 
+        
+        </div>
+        
+        <h2 class="welcome">WELCOME</h2>
+        
+        <form id="login" onsubmit="loginUser(event)"> 
+            <div id="loginDiv">
+                <input id="usernameLogin" name="usernameLogin" type="text" placeholder="USERNAME" required>
+                <input id="passwordLogin" name="passwordLogin" type="password" placeholder="PASSWORD" required>
+                <input id="submitLogin" type="submit">
+            </div>
+                <script src="JS/loginUser.js"></script>
+        </form>
+        
+        <button class="collapsible">New? Register here</button>
+        
+        <div class="content">
 
-    <div id="message">
-        <h3>Password must contain the following:</h3>
-        <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
-        <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
-        <p id="number" class="invalid">A <b>number</b></p>
-        <p id="length" class="invalid">Minimum <b>8 characters</b></p>
-      </div>
-    <script src="JS/loginUser.js"></script>
-    <script src="JS/createUser.js"></script>
-    <br>
-    <br>
-    <br>
-</div>
+            <form onsubmit = "createNewUser(event)">
+                <div id="createUserDiv">
+                    <h3 class="createMemberP">Register new user</h3>
+                    <input id="userNameInput" name="username" type="text" placeholder="username">
+                    <input type="password" id="psw" name="psw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+
+                    <input id="passwordInput_2" name="password_2" type="password" placeholder="repeat password">
+                    <input id="submitUserBtn" type="submit">
+                </div>
+            </form>
+
+            <div id="message">
+                <h3 class="passwordTitle">Password must contain the following:</h3>
+                    <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+                    <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+                    <p id="number" class="invalid">A <b>number</b></p>
+                    <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+            </div>
+            <script src="JS/loginUser.js"></script>
+            <script src="JS/createUser.js"></script>
+            <br>
+            <br>
+            <br>
+        </div>
+    </div>
 </body>
 </html>

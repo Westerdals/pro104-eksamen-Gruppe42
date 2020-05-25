@@ -1,55 +1,201 @@
+* {
+  margin: 0px 0px 0px 0px;
+}
+.container {
+  position: relative;
+  width: 1336px;
+  height: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+  background-color: #eee;
+}
+
+.background-img {
+  width: 1366px;
+  height: 688px;
+  z-index: 0;
+  position: absolute;
+}
+
+.banner{
+  display: inline-flex;
+  margin-top: 10px;
+  margin-left: 30px;
+  position: absolute;
+  z-index: 1;
+  
+}
+.logo{
+  width: 100px;
+  height: 100px;
+  margin-top: 30px;
+  margin-left: 50px;
+  position: absolute;
+  display: inline-flex;
+}
+.inspire{
+  margin-top: -40px;
+  margin-left: 200px;
+  font-size: 100px;
+  position: absolute;
+  font-family: bungee, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.spire {
+  font-family: bungee, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #87AB98;
+}
+.info {
+  margin-top: 350px;
+  margin-left: 100px;
+  position: absolute;
+  
+}
+.infoBox {
+  width: 500px;
+  height: 380px;
+  border-radius: 20px;
+  background-color: #eee;
+  opacity: 0.95;
+}
+.aboutUs {
+  padding-top: 50px;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+.welcome {
+  margin-top: 77px;
+  margin-left: 890px;
+  z-index: 1;
+  font-size: 60px;
+  position: absolute;
+  font-family: bungee, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+#login {
+  width: 500px;
+  height: 600px;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  margin-left: 800px;
+  position: absolute;
+  display: inline-block;
+  border-radius: 20px;
+  background-color: #87AB98;
+  box-shadow: 0px 2px 10px;
+  opacity: 0.95;
+}
+#usernameLogin {
+  height: 50px;
+  width: 400px;
+  margin-top: 100px;
+  margin-left: 30px;
+  border-radius: 20px;
+}
+#passwordLogin {
+  height: 50px;
+  width: 400px;
+  margin-top: 10px;
+  margin-left: 30px;
+  border-radius: 20px;
+}
+#submitLogin {
+  width: 60px;
+  height: 40px;
+  margin-top: 10px;
+  margin-left: 40px;
+  border-radius: 5px;
+  opacity: 0.7;
+  border-style: none;
+  background-color: #87AB98;
+  font-size: 20px;
+}
 .collapsible {
-    background-color: #777;
-    color: white;
-    cursor: pointer;
-    width: 10%;
-    border: none;
-    text-align: left;
-    outline: none;
-    font-size: 20px;
-  }
-  
-  .active, .collapsible:hover {
-    background-color: #555;
-  }
-  
-  .content {
+  margin-top: 380px;
+  margin-left: 840px;
+  background-color: #777;
+  color: white;
+  cursor: pointer;
+  width: 204px;
+  border-radius: 5px;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 20px;
+  position: absolute;
+}
+
+.active, .collapsible:hover {
+  background-color: #555;
+
+}
+
+.content {
+    margin-left: 820px;
+    margin-top: 410px;
+    border-radius: 20px;
+    position: absolute;
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.2s ease-out;
-    background-color: #f1f1f1;
-  }
+    background-color: #eee;
+} 
+.createMemberP {
+  font-size: 20px;
+  margin-left: 10px;
 
+}
+.passwordTitle {
+  font-size: 20px;
+}
+#message {
+    margin-left: 10px;
+  display:inline block;
+  background: #eee;
+  color: #000;
+  position: relative;
+  font-size: 20px;
   
-  #message {
-    display:inline block;
-    background: #f1f1f1;
-    color: #000;
-    position: relative;
-    
-  }
+}
+
+#message p {
+    font-size: 20px;
+}
+#letter {
+  margin-top: 5px;
   
-  #message p {
-    font-size: 10px;
-  }
+}
+#capital {
+  margin-top: 5px;
+}
+#number {
+  margin-top: 5px;
+}
+#length {
+  margin-top: 5px;
+}
+/* Add a green text color */
+.valid {
+  color: #5ba626;
   
-  /* Add a green text color */
-  .valid {
-    color: green;
-    
-  }
-  
-  .valid:before {
-    position: relative;
-    left: -35px;
-  }
-  
-  /* Add a red text color*/
-  .invalid {
-    color: red;
-  }
-  
-  .invalid:before {
-    position: relative;
-    left: -35px;
-  }
+}
+
+.valid:before {
+  position: relative;
+  left: -35px;
+}
+
+/* Add a red text color*/
+.invalid {
+  color: #a62a28;
+}
+
+.invalid:before {
+  position: relative;
+  left: -35px;
+}
