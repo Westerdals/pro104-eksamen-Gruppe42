@@ -53,6 +53,8 @@
   margin-top: 350px;
   margin-left: 100px;
   position: absolute;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: lighter;
   
 }
 #infoBox {
@@ -204,4 +206,15 @@
 .invalid:before {
   position: relative;
   left: -35px;
+}
+
+#confirmMsg {
+  position: absolute;
+  width: 300px;
+  height: 20px;
+  color: #5ba626;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  font-style: italic;
+  opacity: 0;
 }
