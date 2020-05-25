@@ -53,20 +53,19 @@ function renderQuote() {
   }
 // Render user in top right corner 
   function renderMyUser(){
-      let myEL = document.getElementById("myPlantDiv");
+      let myEl = document.getElementById("myPlantDiv");
       let myUser = JSON.parse(window.localStorage.getItem("loggedInUser")) || []
-      myEL.innerHTML =""
+      myEl.innerHTML =""
 
       const {username} = myUser;
       const randomColor = myUser.randomColor;
       // sets the innerhtml to be the username and password.
-      myEL.innerHTML += ` <div class="circleDiv">
+      myEl.innerHTML += ` <div class="circleDiv">
       <div class="headerCircles" Style="border: 2px solid ${randomColor};
       ">
       </div>
         <div class="circleTxt">My profile</div>
-            </div>`;
-
+      </div>`;
   }
 
   function openForm(index){
@@ -94,7 +93,6 @@ function renderQuote() {
 function createTask(){
 
   if(document.getElementById("title").innerHTML === "New task"){
-    console.log("thisss")
       //resets the value when you create a task.
       event.preventDefault();
       const taskName = document.querySelector("[name = 'taskName']").value;
@@ -133,9 +131,8 @@ function createTask(){
 }
 
 
-//adds two eventlisters to new tasks so you can drag and drop + edit the value. 
+//adds two eventlisters to new tasks so you can drag and drop
 function addEventListeners(task,tasksEl,taskEl){
-
   taskEl.addEventListener("dragstart",event =>{
     data= task;
     // store the values to check them against the array to find position
@@ -160,19 +157,22 @@ function addEventListeners(task,tasksEl,taskEl){
     event.dataTransfer.setData("text/plain",event.target.id);
 
   });
- 
 }
 
 function renderColumns(){
   lists = document.querySelectorAll(".progressColumns");
+  //for each column runs through the localstorage and creates a div for each task. 
   lists.forEach(element => {
     let tasksEl = document.getElementById(element.id);
     tasksEl.innerHTML = "";
+    //finds the column in localstorage and creates a list.
     let tasksList = JSON.parse(window.localStorage.getItem(element.id)) || [];
+    //loops through the list and creates elements for each task.
     for(const task of tasksList){
 
       const taskEl = document.createElement("div");
       taskEl.draggable = true;
+
       addEventListeners(task,tasksEl,taskEl);
       const {taskName,taskDescription,assignMember} = task;
       let objectDiv = document.createElement("div");
@@ -187,6 +187,7 @@ function renderColumns(){
       <br><strong>Responsibility:</strong> <i> ${assignMember}</i>
       <br>
       `;
+     // created the buttons this way so it could be found and added eventlisteners individually. 
       let edit = document.createElement("button");
       edit.type = "button";
       objectDiv.appendChild(edit);
