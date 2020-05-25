@@ -173,7 +173,7 @@ function openMemberTask(){
         });
         console.log(index);
         
-      let confirmed = confirm("do you want do delete : " + username + "??");
+      let confirmed = confirm("Are you sure want do delete " + username + "?");
       console.log(confirmed);
       if(confirmed === true){
         console.log("Task deleted:", usersList.splice(index, 1));

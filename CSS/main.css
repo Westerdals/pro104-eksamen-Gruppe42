@@ -33,6 +33,7 @@ h1 {
     width: 16%;
     height: 120px;
     background-color: white;
+    white-space: nowrap;
 }
 
 #circleOverview {
