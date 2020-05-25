@@ -56,7 +56,7 @@ function renderQuote() {
 
       circleDiv.appendChild(deleteMemberBtn);
       circleDiv.addEventListener("click",function(){
-        console.log("hello");
+       
 
         toDoFeedEl = document.getElementById("toDoColumn")
         let selectedUser = username;
