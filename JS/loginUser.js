@@ -15,15 +15,18 @@ function loginUser(event) {
         
     }
 
+    const errorMsg = document.getElementById("errorMsg")
     for(const user of users){
         if(userName === user.username) {
             if(password === user.password){
                 window.localStorage.setItem("loggedInUser", JSON.stringify(user));
                 redirectToMain();
             }else{
-                alert("incorrect username or password, please try again.");
+                errorMsg.style.opacity = "1";
             }
 
+        }else { 
+          errorMsg.style.opacity = "1";
         }
     }
     
