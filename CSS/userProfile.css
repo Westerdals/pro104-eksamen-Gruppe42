@@ -10,19 +10,38 @@
     margin-right: auto;
     overflow: hidden;
     background-color: #eee;
+    z-index: 1;
 }
-.return-btn {
-    width: 60px;
-    height: 50px;
+.background-h1 {
+    margin-top: 560px;
+    margin-left: 10px;
+    font-size: 150px;
+    position: absolute;
+    opacity: 0.5;
+    z-index: 0;
+    font-family: bungee, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    
+}
+#returnBtn {
+    width: 120px;
+    height: 30px;
     margin-left: -150px;
     position: absolute;
+    background-color: white;
+    padding: 10px;
+    padding-top: 18px;
+    text-align: center;
+    border-radius: 10px;
+    border: 2px solid lightgray;
+    font-family: Arial, Helvetica, sans-serif;
 }
 .plant-box {
     width: 300px;
     height: 700px;
-    margin-top: 50px;
+    margin-top: 10px;
     margin-left: 200px;
-    background-color: #eeeeee;
     border-radius: 150px;
     position: absolute;
 }
@@ -30,51 +49,50 @@
     padding: 50px 0;
     text-align: center;
     display: block;
+    z-index: 2;
 }
 .fact-box {
-    width: 200px;
-    height: 250px;
+    width: 500px;
+    height: 260px;
     position: absolute;
-    margin-top: 500px;
+    margin-top: 50px;
     margin-left: 50px;
     background-color: #CCEB9D;
     border-radius: 50px;
     opacity: 0.7;
-    font-family: gopher, sans-serif;
+    font-family: sans-serif;
     font-weight: 700;
     font-style: normal;
+    z-index: 3;
 }
 .factP {
-    padding: 40px 0;
-    text-align: center;
-    display: block;
+    padding: 20px 20px;
     position: absolute;
+    z-index: 4;
 }
 .progress {
-    width: 600px;
-    height: 600px;
-    margin-top: 100px;
-    margin-left: 700px;
+    width: 670px;
+    height: 550px;
+    margin-top: 70px;
+    margin-left: 600px;
     border-radius: 70px;
-    background-color: dimgray;
+    background-color: #93a676;
+    box-shadow: 0px 2px 10px;
+    z-index: 7;
     
 }
 .box1 {
     padding: 50px 0;
     
 }
-.profile-name {
+#username {
     margin-left: 50px;
-    font-size: 40px;
+    font-size: 60px; 
+    font-family: bungee, sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
-.xp-bar {
-    width: 400px;
-    height: 40px;
-    margin-top: 10px;
-    margin-left: 50px;
-    background-color: dodgerblue;
-    border-radius: 20px;
-}
+
 .achievements {
     width: 500px;
     height: 350px;
@@ -82,31 +100,4 @@
     margin-left: 50px;
     border-radius: 30px;
     background-color: azure;
-}
-.badge-1 {
-    width: 100px;
-    height: 100px;
-    background-color: #eeeeee;
-    margin-top: 35px;
-    margin-left: 50px;
-    border-radius: 50px;
-    position: absolute;
-}
-.badge-2 {
-    width: 100px;
-    height: 100px;
-    background-color: #000000;
-    margin-top: 35px;
-    margin-left: 200px;
-    border-radius: 50px;
-    position: absolute;
-}
-.badge-3 {
-     width: 100px;
-    height: 100px;
-    background-color: #D2FEC4;
-    margin-top: 35px;
-    margin-left: 350px;
-    border-radius: 50px;
-    position: absolute;
 }

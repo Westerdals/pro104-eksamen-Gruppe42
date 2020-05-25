@@ -9,29 +9,29 @@
 </head>
 <body>
     
-    <div class="container">
+    <div id="container">
         
-        <div class="banner">
-                <img class="logo" src="images/logo-plante.png">
-                <h1 class="inspire">In<span class="spire">spire</span></h1>
+        <div id="banner">
+                <img id="logo" src="images/logo-plante.png">
+                <h1 id="inspire">In<span id="spire">spire</span></h1>
         </div>
             
-        <div class="background-img">
+        <div id="background-img">
             
-                <img class="plants" src="images/plant-background.png">
+                <img src="images/plant-background.png">
                 
         </div>
         
-        <div class="info">
-            <div class="infoBox">
-                <p class="aboutUs">Together with our partners in Sumatra, we are reclaiming and restoring this land for wildlife. <br><br>Planting trees and maintaining them as they grow takes a lot of time, and employs a lot of people. To plant a rainforest tree seedling and nurture it until it’s a strong adult tree costs around £5, so to plant several hectares quickly adds up.</p>
+        <div id="info">
+            <div id="infoBox">
+                <p id="aboutUs">Together with our partners in Sumatra, we are reclaiming and restoring this land for wildlife. <br><br>Planting trees and maintaining them as they grow takes a lot of time, and employs a lot of people. To plant a rainforest tree seedling and nurture it until it’s a strong adult tree costs around £5, so to plant several hectares quickly adds up.</p>
             
             </div>
                  
         
         </div>
         
-        <h2 class="welcome">WELCOME</h2>
+        <h2 id="welcomeTxt">WELCOME</h2>
         
         <form id="login" onsubmit="loginUser(event)"> 
             <div id="loginDiv">
@@ -49,6 +49,7 @@
             <form onsubmit = "createNewUser(event)">
                 <div id="createUserDiv">
                     <h3 class="createMemberP">Register new user</h3>
+                    <br>
                     <input id="userNameInput" name="username" type="text" placeholder="username">
                     <br>
                     <br>
@@ -60,11 +61,14 @@
             </form>
 
             <div id="message">
+                <br>
                 <h3 class="passwordTitle">Password must contain the following:</h3>
                     <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
                     <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
                     <p id="number" class="invalid">A <b>number</b></p>
                     <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+                    <br>
+                    <div id="confirmMsg">User created successfully!</div>
             </div>
             <script src="JS/loginUser.js"></script>
             <script src="JS/createUser.js"></script>

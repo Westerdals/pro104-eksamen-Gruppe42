@@ -13,6 +13,7 @@ function createNewUser(event) {
     const user = { username,password,randomColor};
     
     const users = JSON.parse(window.localStorage.getItem("users")) || [];
+    const confirmMsg = document.getElementById("confirmMsg")
     for(user1 of users){
         if(username === user1.username) {
           alert("username is taken");
@@ -30,6 +31,9 @@ function createNewUser(event) {
         users.push(user);
         window.localStorage.setItem("users", JSON.stringify(users));
         addUser();
+        confirmMsg.style.opacity = "1";
+
+
         // add users into the option field of assignmember. 
         // resets the input field so the values is default.
         event.target.reset();

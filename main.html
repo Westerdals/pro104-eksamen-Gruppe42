@@ -11,7 +11,7 @@
         <!-- header div containing circles with overview of every group member and their plants -->
         <header>
             <div id="headerDiv">
-                <div id="newMemberDiv">
+                <div id="headerFunctionsDiv">
                     <a href="index.html">
                         <div class="circleDiv">
                             <div id="newMemberC">
@@ -20,16 +20,23 @@
                             <div class="circleTxt">New member</div>
                         </div>
                      </a>
+                     <div class="circleDiv">
+                        <div id="viewAllC" onsubmit="renderAll(event)">
+                        </div>
+                        <div class="circleTxt">View all</div>
+                    </div>
                 </div>
                     <div id="circleOverview">
 
                         <script src="JS/createUser.js"></script>
                     </div>
-                <div id="myPlantDiv">
-                    <div id="myProfileCircle">
-                    </div>
-                    <div id="myPlantTxt" class="circleTxt">My plant</div>
-                </div>
+                    <a href="userProfile.html">
+                        <div id="myPlantDiv">
+                            <div id="myProfileCircle">
+                            </div>
+                            <div id="myPlantTxt" class="circleTxt">My plant</div>
+                        </div>
+                    </a>
             </div>
         </header>
 
