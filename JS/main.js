@@ -276,21 +276,21 @@ function renderFeed(){
       feedDiv.appendChild(newFeedEl);
       if(feedColumn === "toDoColumn"){
         feedColumn = "To Do"
-        newFeedEl.innerHTML += `<div class="feedEl">•  <i>${JSON.parse(localStorage.getItem("loggedInUser")).username} have just moved ${feedValues} 
+        newFeedEl.innerHTML += `<div class="feedEl">•  <i>${JSON.parse(localStorage.getItem("loggedInUser")).username} moved ${feedValues} 
         into ${feedColumn} </i></div>`
       }else{
         if(feedColumn === "inProgressColumn"){
           feedColumn = "In Progress";
-          newFeedEl.innerHTML += `<div class="feedEl">•  <i>${JSON.parse(localStorage.getItem("loggedInUser")).username} Started working on ${feedValues} </i></div>`
+          newFeedEl.innerHTML += `<div class="feedEl">•  <i>${JSON.parse(localStorage.getItem("loggedInUser")).username} started working on ${feedValues} </i></div>`
         }else{
           feedColumn = "Completed";
-          newFeedEl.innerHTML += `<div class="feedEl">•  <i>${JSON.parse(localStorage.getItem("loggedInUser")).username} have just Completed ${feedValues} </i></div>`
+          newFeedEl.innerHTML += `<div class="feedEl">•  <i>${JSON.parse(localStorage.getItem("loggedInUser")).username} completed ${feedValues} </i></div>`
         }
       } break;
       case 3:
         newFeedEl = document.createElement("div");
         feedDiv.appendChild(newFeedEl);
-        newFeedEl.innerHTML = `<div class="feedEl">•  <i>${JSON.parse(localStorage.getItem("loggedInUser")).username} have just deleted "${feedValues}" </i></div>`
+        newFeedEl.innerHTML = `<div class="feedEl">•  <i>${JSON.parse(localStorage.getItem("loggedInUser")).username} deleted "${feedValues}" </i></div>`
         break;
      
   }
