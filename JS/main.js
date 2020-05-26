@@ -21,6 +21,12 @@ var quoteArray = [
     "To be the best, you must be able to handle the worst",
     
 ];
+
+function renderView(){
+  console.log("hellp")
+  feedSwitch = 0;
+  renderAll();
+}
 let quoteDiv = document.getElementById("quoteDiv");
 let randomNr = Math.floor(Math.random()* quoteArray.length);
 
@@ -184,18 +190,17 @@ function generateRandomColor() {
   });
       });
       let deleteUser = false;
-  deleteMemberBtn.addEventListener("click",function(){
-        let usersList = JSON.parse(localStorage.getItem("users"));
-        let index = usersList.findIndex(member=> {
-          let logUser = JSON.parse(localStorage.getItem("loggedInUser")).username
-          if(username === member.username){
-            if(username === logUser){
-              deleteUser = false;
-              alert("You can not delete yourself")
-              return false;
-
-            }else{
-              deleteUser = true;
+      deleteMemberBtn.addEventListener("click",function(){
+      let usersList = JSON.parse(localStorage.getItem("users"));
+      let index = usersList.findIndex(member=> {
+      let logUser = JSON.parse(localStorage.getItem("loggedInUser")).username
+      if(username === member.username){
+        if(username === logUser){
+          deleteUser = false;
+          alert("You can not delete yourself")
+          return false;
+        }else{
+          deleteUser = true;
               return true;
             }
           }
@@ -422,7 +427,7 @@ function renderColumns(){
     feedColumn = event.currentTarget.id;
     renderAll();
   }
-   
+
 /*-------------------------------Feed --------------------------------------------*/
 
 function renderFeed(){
@@ -497,6 +502,8 @@ function renderFeed(){
     feedEl.innerHTML =feedList[i]
   }
 }
+
+
 renderAll();
 
 // added function to render everytask so its easier than to call functions. / or make a system to loop through different variants.
