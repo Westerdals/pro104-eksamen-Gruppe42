@@ -388,7 +388,7 @@ function renderColumns(){
         }
          return false;
       });
-      taskllist.status =  
+      taskList.status =  
           // do not remove this console.log it both shows and applies the .splice. 
     console.log("Task deleted:", taskList.splice(index, 1));
     window.localStorage.setItem(element.id,JSON.stringify(taskList));  
