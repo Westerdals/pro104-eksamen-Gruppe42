@@ -14,7 +14,14 @@ var quoteArray = [
     "Plant your own garden and decorate your own soul instead of waiting for someone to bring you flowers.",
     "The best time to plant a tree was 20 years ago. The second best time is now.",
     "Keep going, keep growing",
-    "A flower does not think of competing with the flower next to it, it just blossoms."
+    "A flower does not think of competing with the flower next to it, it just blossoms.",
+    "The best view comes after the hardest climb.",
+    "Deep in their roots, all the flowers keep the light",
+    "Nature is pleased with simplicity",
+    "To be the best, you must be able to handle the worst",
+    "",
+    "",
+    
 ];
 let quoteDiv = document.getElementById("quoteDiv");
 let randomNr = Math.floor(Math.random()* quoteArray.length);
