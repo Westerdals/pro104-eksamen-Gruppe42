@@ -396,50 +396,71 @@ function renderColumns(){
 /*-------------------------------Feed --------------------------------------------*/
 
 function renderFeed(){
+  feedList = JSON.parse(localStorage.getItem("newFeed")) || [];
+  feedLength = feedList.length;
+  let newFeed;
+  let addFeed = false;
 
-  
   feedDiv = document.getElementById("feedDiv");
+  feedDiv.innerHTML = "";
   switch(feedSwitch) {
     default:
-      newFeedEl = document.createElement("div");
-      feedDiv.appendChild(newFeedEl);
-      newFeedEl.innerHTML= "";
       break;
       case 1: 
-      newFeedEl = document.createElement("div");
-      feedDiv.appendChild(newFeedEl);
-      newFeedEl.innerHTML = `<div class="feedEl">•  <i>${feedValues} have been assigned to a new task </i></div>`
+      newFeed = `${feedValues} have been assigned to a new task`
+      addFeed = true;
       break;
       case 2: 
-      newFeedEl = document.createElement("div");
-      feedDiv.appendChild(newFeedEl);
-      if(feedColumn === "toDoColumn"){
-        feedColumn = "To Do"
-        newFeedEl.innerHTML += `<div class="feedEl">•  <i>${JSON.parse(localStorage.getItem("loggedInUser")).username} moved ${feedValues} 
-        into ${feedColumn} </i></div>`
-      }else{
-        if(feedColumn === "inProgressColumn"){
-          feedColumn = "In Progress";
-          newFeedEl.innerHTML += `<div class="feedEl">•  <i>${JSON.parse(localStorage.getItem("loggedInUser")).username} started working on ${feedValues} </i></div>`
+        if(feedColumn === "toDoColumn"){
+          newFeed = `${JSON.parse(localStorage.getItem("loggedInUser")).username} moved ${feedValues}into ${feedColumn}`
+          addFeed = true;
         }else{
-          feedColumn = "Completed";
-          newFeedEl.innerHTML += `<div class="feedEl">•  <i>${JSON.parse(localStorage.getItem("loggedInUser")).username} completed ${feedValues} </i></div>`
-        }
-      } break;
+          if(feedColumn === "inProgressColumn"){
+            newFeed = `${JSON.parse(localStorage.getItem("loggedInUser")).username} started working on ${feedValues}`
+            addFeed = true;
+          }else{
+            addFeed = true;
+            newFeed = `${JSON.parse(localStorage.getItem("loggedInUser")).username} completed ${feedValues}`;
+          }
+        } 
+        break;
       case 3:
-        newFeedEl = document.createElement("div");
-        feedDiv.insertAdjacentElement("afterbegin",newFeedEl)
-        feedDiv.appendChild(newFeedEl);
-        newFeedEl.innerHTML = `<div class="feedEl">•  <i>${JSON.parse(localStorage.getItem("loggedInUser")).username} deleted "${feedValues}" </i></div>`
+        addFeed = true;
+        newFeed = `${JSON.parse(localStorage.getItem("loggedInUser")).username} deleted "${feedValues}"`
+        addFeed = true;
         break;
   }
+  if(addFeed === true){
+    feedLength = feedList.length
+  if(feedLength => 9){
+    feedList.splice(9,1)
+    feedList.unshift(newFeed);
+    localStorage.setItem("newFeed",JSON.stringify(feedList))
+  }else{
+    feedList.unshift(newFeed)
+    feedList.length;
+    localStorage.setItem("newFeed",JSON.stringify(feedList))
+    }
+  }
+  addFeed = false;
+  
+  for(i = 0;i < feedList.length;i++){
+    newFeedEl = document.createElement("div");
+    feedDiv.insertAdjacentElement("afterbegin",newFeedEl)
+    feedDiv.appendChild(newFeedEl);
+    feedEl = document.createElement("div");
+    feedEl.className = "feedEl"
+    feedDiv.appendChild(feedEl);
+    feedEl.innerHTML =feedList[i]
+  }
+
 }
+
 
 renderAll();
 
 // added function to render everytask so its easier than to call functions. / or make a system to loop through different variants.
 function renderAll() {
-  console.log("render")
   renderColumns();
   renderMyUser();
   renderQuote();
