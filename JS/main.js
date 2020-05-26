@@ -31,7 +31,6 @@ function renderQuote() {
 }
 
 function openMemberTask(){
-  console.log("helaskdjlaskldjskjløsdakj")
   if(document.getElementById("memberForm").style.display === "block"){
     document.getElementById("memberForm").style.display = "none";
 }else{
@@ -55,7 +54,6 @@ function openMemberTask(){
     renderAll();
     openMemberTask();
   }
-  
   function renderUserList() {
     // Link to a div in the html file.
     let usersEl = document.getElementById("circleOverview");
@@ -77,7 +75,9 @@ function openMemberTask(){
       circleDiv.className= "circleDiv"
       usersEl.appendChild(circleDiv);
       circleDiv.innerHTML += `     
-         <div class="headerCircles" Style="border: 2px solid ${randomColor};">`
+         <div class="headerCircles" Style=" background-image:url('images/Monstera.png');""
+        Style = "background-size: 80;"
+         Style="border: 2px solid ${randomColor};">`
       circleTxt = document.createElement("div");
       circleTxt.innerHTML = username;
       circleTxt.className ="circleTxt";
@@ -165,7 +165,6 @@ function openMemberTask(){
   
       });
   deleteMemberBtn.addEventListener("click",function(){
-        console.log(user)
         let usersList = JSON.parse(localStorage.getItem("users"));
         let index = usersList.findIndex(member=> {
           if(username === member.username){
@@ -173,12 +172,9 @@ function openMemberTask(){
             return true;
           }
           return false;
-          console.log("wut")
         });
-        console.log(index);
         
       let confirmed = confirm("Are you sure want do delete " + username + "?");
-      console.log(confirmed);
       if(confirmed === true){
         console.log("Task deleted:", usersList.splice(index, 1));
         window.localStorage.setItem("users",JSON.stringify(usersList)); 
@@ -252,11 +248,13 @@ function createTask(){
     const taskDescription = document.querySelector("[name = 'taskDescription']").value;
     const assignMember = document.querySelector("[name = 'assignMember']").value;
     const task = {taskName,taskDescription,assignMember}
+    //stores the value before you edit it. 
+    let tempName = tempTask.taskName;
+    let tempDesc = tempTask.taskDescription;
       const taskList = JSON.parse(window.localStorage.getItem(editTaskId)) || [];
       // finds the previous value and removes it from localstorage. 
       let index = taskList.findIndex(preEdit=> {
-        if(taskName === preEdit.taskName  && taskDescription === preEdit.taskDescription){
-          console.log("it works ");
+        if(tempName === preEdit.taskName  && tempDesc === preEdit.taskDescription){
           return true;
         }
         return false;
@@ -296,7 +294,6 @@ taskEl.addEventListener("dragstart",event =>{
     // stores the list back into localstorage with the element removed. 
     localStorage.setItem(event.currentTarget.parentElement.id, JSON.stringify(storedValues));
     event.dataTransfer.setData("text/plain",event.target.id);
-
   });
 }
 
