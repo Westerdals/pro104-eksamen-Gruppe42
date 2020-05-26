@@ -55,6 +55,7 @@ function openMemberTask(){
     renderAll();
     openMemberTask();
   }
+
   function renderUserList() {
     // Link to a div in the html  e.
     let usersEl = document.getElementById("circleOverview");
@@ -76,9 +77,8 @@ function openMemberTask(){
       circleDiv.className= "circleDiv"
       usersEl.appendChild(circleDiv);
       circleDiv.innerHTML += `     
-         <div class="headerCircles" Style=" background-image:url('images/Monstera.png');""
-        Style = "background-size: 80;"
-         Style="border: 2px solid ${randomColor};">`
+         <div class="headerCircles" Style=" background-image:url('images/Monstera.png');
+         border: 2px solid ${randomColor}; background-size: 60px;  background-repeat: no-repeat;">`
       circleTxt = document.createElement("div");
       circleTxt.innerHTML = username;
       circleTxt.className ="circleTxt";
