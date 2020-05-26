@@ -19,8 +19,6 @@ var quoteArray = [
     "Deep in their roots, all the flowers keep the light",
     "Nature is pleased with simplicity",
     "To be the best, you must be able to handle the worst",
-    "",
-    "",
     
 ];
 let quoteDiv = document.getElementById("quoteDiv");
@@ -36,6 +34,7 @@ function openMemberTask(){
 }else{
     document.getElementById("memberForm").style.display = "block";
 }
+
 }
   function newMember(){
     generateRandomColor();
@@ -55,7 +54,7 @@ function openMemberTask(){
     openMemberTask();
   }
   function renderUserList() {
-    // Link to a div in the html file.
+    // Link to a div in the html  e.
     let usersEl = document.getElementById("circleOverview");
     // get users from local storage or if its null an empty array.
     let users = JSON.parse(window.localStorage.getItem("users")) || [];
