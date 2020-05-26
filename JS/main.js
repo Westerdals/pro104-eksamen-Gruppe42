@@ -188,13 +188,10 @@ function generateRandomColor() {
         let usersList = JSON.parse(localStorage.getItem("users"));
         let index = usersList.findIndex(member=> {
           let logUser = JSON.parse(localStorage.getItem("loggedInUser")).username
-          
-          console.log(logUser)
           if(username === member.username){
             if(username === logUser){
-              console.log("isrun");
               deleteUser = false;
-              alert("you really wanna kick yourself ?")
+              alert("You can not delete yourself")
               return false;
 
             }else{
@@ -230,8 +227,8 @@ function generateRandomColor() {
       const randomColor = myUser.randomColor;
       // sets the innerhtml to be the username and password.
       myEl.innerHTML += ` <div class="circleDiv">
-      <div class="headerCircles" Style=" background-image:url('images/Monstera.png');
-      border: 2px solid ${randomColor}; background-size: 60px;  background-repeat: no-repeat;">
+      <div class="headerCircles" Style="border: 2px solid ${randomColor};
+      ">
       </div>
         <div class="circleTxt">My profile</div>
             </div>`;
@@ -393,7 +390,6 @@ function renderColumns(){
       });
       taskllist.status =  
           // do not remove this console.log it both shows and applies the .splice. 
-          console.log(taskList[index]);
     console.log("Task deleted:", taskList.splice(index, 1));
     window.localStorage.setItem(element.id,JSON.stringify(taskList));  
     feedValues = task.taskName;
