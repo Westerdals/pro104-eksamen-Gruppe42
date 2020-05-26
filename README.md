@@ -1,2 +1,2 @@
-# pro104-exercise-anewardeberg
-# pro104-eksamen-anewardeberg
+# pro104-exercise-gruppe42
+# pro104-eksamen-gruppe42
