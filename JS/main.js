@@ -230,8 +230,8 @@ function generateRandomColor() {
       const randomColor = myUser.randomColor;
       // sets the innerhtml to be the username and password.
       myEl.innerHTML += ` <div class="circleDiv">
-      <div class="headerCircles" Style="border: 2px solid ${randomColor};
-      ">
+      <div class="headerCircles" Style=" background-image:url('images/Monstera.png');
+      border: 2px solid ${randomColor}; background-size: 60px;  background-repeat: no-repeat;">
       </div>
         <div class="circleTxt">My profile</div>
             </div>`;

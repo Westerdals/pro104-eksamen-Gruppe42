@@ -7,4 +7,14 @@ function renderUsername(){
     usernameEL.innerHTML = username;
 }
 
+function logOutUser(event) {
+    event.preventDefault();
+
+    function redirectToIndex() {
+        window.open("index.html","_self");
+    }
+    localStorage.removeItem("loggedInUser");
+    redirectToIndex();
+}
+
 renderUsername();
