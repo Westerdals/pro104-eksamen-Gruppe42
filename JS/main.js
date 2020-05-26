@@ -50,6 +50,8 @@ function openMemberTask(){
       var g = Math.floor(Math.random()*256);
       randomColor =  `rgb(${r}, ${b}, ${g})`;
     }
+    feedValues = username;
+    feedSwitch = 5;
     renderAll();
     openMemberTask();
   }
@@ -156,27 +158,25 @@ function openMemberTask(){
     taskEl.remove();
     renderAll();
 });
-
   objectDiv.insertAdjacentElement("beforeend",edit)
       tasksEl.appendChild(taskEl);
     }
   });
-  
       });
   deleteMemberBtn.addEventListener("click",function(){
         let usersList = JSON.parse(localStorage.getItem("users"));
         let index = usersList.findIndex(member=> {
           if(username === member.username){
-            console.log("it works ");
             return true;
           }
           return false;
         });
-        
       let confirmed = confirm("Are you sure want do delete " + username + "?");
       if(confirmed === true){
         console.log("Task deleted:", usersList.splice(index, 1));
         window.localStorage.setItem("users",JSON.stringify(usersList)); 
+        feedValues = username;
+        feedSwitch = 6;
         renderAll();
       }
   });
@@ -239,6 +239,8 @@ function createTask(){
       const taskList = JSON.parse(window.localStorage.getItem("toDoColumn")) || [];
       taskList.push(task);
       window.localStorage.setItem("toDoColumn",JSON.stringify(taskList));   
+      feedValues = assignMember;
+      feedSwitch = 4; 
   }else{ // this is the edit version. 
     event.preventDefault();
     const taskName = document.querySelector("[name = 'taskName']").value;
@@ -262,9 +264,9 @@ function createTask(){
       window.localStorage.setItem(editTaskId,JSON.stringify(taskList)); 
       openForm();
       feedValues = assignMember;
-      console.log(feedValues)
+      feedSwitch = 1; 
   }
-  feedSwitch = 1; 
+
   renderAll();
 }
 
@@ -427,7 +429,20 @@ function renderFeed(){
         newFeed = `${JSON.parse(localStorage.getItem("loggedInUser")).username} deleted "${feedValues}"`
         addFeed = true;
         break;
-  }
+      case 4: 
+      newFeed =`${JSON.parse(localStorage.getItem("loggedInUser")).username} have just created a new task : ${feedValues} `
+        addFeed = true;
+        break;
+
+      case 5: 
+      newFeed = `${JSON.parse(localStorage.getItem("loggedInUser")).username} created a new member, please welcome ${feedValues}`
+      addFeed = true;
+      break;
+      case 6:
+        newFeed = `${JSON.parse(localStorage.getItem("loggedInUser")).username} kicked out ${feedValues} goodbye :) `
+        addFeed = true;
+        break;
+    }
   if(addFeed === true){
     feedLength = feedList.length
   if(feedLength => 9){
