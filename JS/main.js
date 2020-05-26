@@ -238,9 +238,7 @@ function createTask(){
       document.getElementById("form").style.display = "none";
       const taskList = JSON.parse(window.localStorage.getItem("toDoColumn")) || [];
       taskList.push(task);
-      window.localStorage.setItem("toDoColumn",JSON.stringify(taskList));  
-      feedValues = assignMember;
- 
+      window.localStorage.setItem("toDoColumn",JSON.stringify(taskList));   
   }else{ // this is the edit version. 
     event.preventDefault();
     const taskName = document.querySelector("[name = 'taskName']").value;
@@ -263,6 +261,8 @@ function createTask(){
       taskList.push(task);
       window.localStorage.setItem(editTaskId,JSON.stringify(taskList)); 
       openForm();
+      feedValues = assignMember;
+      console.log(feedValues)
   }
   feedSwitch = 1; 
   renderAll();
@@ -335,6 +335,7 @@ function renderColumns(){
         document.getElementById("selectMember").value = task.assignMember;
         editTaskId = this.parentElement.parentElement.parentElement.id;
         tempTask = task;
+
         openForm(1);
 
   });
