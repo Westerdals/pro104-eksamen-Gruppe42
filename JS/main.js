@@ -183,25 +183,38 @@ function generateRandomColor() {
     }
   });
       });
+      let deleteUser = false;
   deleteMemberBtn.addEventListener("click",function(){
         let usersList = JSON.parse(localStorage.getItem("users"));
         let index = usersList.findIndex(member=> {
+          let logUser = JSON.parse(localStorage.getItem("loggedInUser")).username
+          
+          console.log(logUser)
           if(username === member.username){
-            return true;
+            if(username === logUser){
+              console.log("isrun");
+              deleteUser = false;
+              alert("you really wanna kick yourself ?")
+              return false;
+
+            }else{
+              deleteUser = true;
+              return true;
+            }
           }
           return false;
         });
-      let confirmed = confirm("Are you sure want do delete " + username + "?");
-      if(confirmed === true){
+      if(deleteUser === true){    
+        let confirmed = confirm("Are you sure want do delete " + username + "?");
+        if(confirmed === true){
         console.log("Task deleted:", usersList.splice(index, 1));
         window.localStorage.setItem("users",JSON.stringify(usersList)); 
         feedValues = username;
         feedSwitch = 6;
+        }
         renderAll();
       }
   });
-
-
       memberOption.innerHTML += `<option value ="${username}">${username}</option>`
     }
     users = [];
@@ -378,7 +391,9 @@ function renderColumns(){
         }
          return false;
       });
+      taskllist.status =  
           // do not remove this console.log it both shows and applies the .splice. 
+          console.log(taskList[index]);
     console.log("Task deleted:", taskList.splice(index, 1));
     window.localStorage.setItem(element.id,JSON.stringify(taskList));  
     feedValues = task.taskName;
@@ -411,7 +426,6 @@ function renderColumns(){
     feedColumn = event.currentTarget.id;
     renderAll();
   }
-
    
 /*-------------------------------Feed --------------------------------------------*/
 
@@ -486,10 +500,7 @@ function renderFeed(){
     feedDiv.appendChild(feedEl);
     feedEl.innerHTML =feedList[i]
   }
-
 }
-
-
 renderAll();
 
 // added function to render everytask so its easier than to call functions. / or make a system to loop through different variants.
