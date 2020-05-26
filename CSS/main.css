@@ -274,7 +274,9 @@ h1 {
         width: 270px;
         font-size: 12px;
         font-family: Arial, Helvetica, sans-serif;
-        height: 20px;
+        min-height: 20px;
+        overflow-wrap: break-word;
+        white-space: normal;
     }
     
 

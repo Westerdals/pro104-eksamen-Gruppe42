@@ -455,11 +455,11 @@ function renderFeed(){
         break;
 
       case 5: 
-      newFeed = `${JSON.parse(localStorage.getItem("loggedInUser")).username} created a new member, please welcome ${feedValues}`
+      newFeed = `${JSON.parse(localStorage.getItem("loggedInUser")).username} created a new member, please welcome ${feedValues}!`
       addFeed = true;
       break;
       case 6:
-        newFeed = `${JSON.parse(localStorage.getItem("loggedInUser")).username} kicked out ${feedValues} goodbye :) `
+        newFeed = `${JSON.parse(localStorage.getItem("loggedInUser")).username} kicked out ${feedValues}. goodbye :) `
         addFeed = true;
         break;
     }
