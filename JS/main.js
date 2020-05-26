@@ -48,10 +48,7 @@ function openMemberTask(){
     renderAll();
     openMemberTask();
   }
-
-
   
-
   function renderUserList() {
     // Link to a div in the html file.
     let usersEl = document.getElementById("circleOverview");
@@ -345,12 +342,12 @@ function renderColumns(){
     let tempTaskDescription = task.taskDescription;
     const taskList = JSON.parse(window.localStorage.getItem(element.id)) || [];
     // finds the previous value and removes it from localstorage. 
-    let index = taskList.findIndex(preEdit=> {
-      if(tempTaskName === preEdit.taskName && tempTaskDescription === preEdit.taskDescription){
-        return true;
-      }
-      return false;
-    });
+      let index = taskList.findIndex(preEdit=> {
+        if(tempTaskName === preEdit.taskName && tempTaskDescription === preEdit.taskDescription){
+          return true;
+        }
+         return false;
+      });
           // do not remove this console.log it both shows and applies the .splice. 
     console.log("Task deleted:", taskList.splice(index, 1));
     window.localStorage.setItem(element.id,JSON.stringify(taskList));  
