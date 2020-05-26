@@ -39,21 +39,41 @@ function openMemberTask(){
   function newMember(){
     generateRandomColor();
     username = document.getElementById("memberName").value;
-    let users = JSON.parse(window.localStorage.getItem("users")) || [];
-    const user = { username,randomColor};
-    users.push(user);
-    window.localStorage.setItem("users", JSON.stringify(users));
-    
-    function generateRandomColor() {
-      var r = Math.floor(Math.random()*256);
-      var b = Math.floor(Math.random()*256);
-      var g = Math.floor(Math.random()*256);
-      randomColor =  `rgb(${r}, ${b}, ${g})`;
+    document.getElementById("memberName").value = null;
+    const users = JSON.parse(window.localStorage.getItem("users")) || [];
+    let usernameAccepted = false;
+    for(user1 of users){
+        if(username === user1.username) {
+          alert("username is taken");
+          usernameAccepted = false;
+          return;
+        }else {
+            console.log("username is available ");
+            usernameAccepted = true;
+        }
     }
-    feedValues = username;
-    feedSwitch = 5;
-    renderAll();
-    openMemberTask();
+if(usernameAccepted === true && username.length >1){
+
+  let users = JSON.parse(window.localStorage.getItem("users")) || [];
+  const user = { username,randomColor};
+  users.push(user);
+  window.localStorage.setItem("users", JSON.stringify(users));
+  
+  feedValues = username;
+  feedSwitch = 5;
+  renderAll();
+  openMemberTask();
+}else{
+  alert("username is too short, minimum 2 characters.");
+}
+
+
+function generateRandomColor() {
+  var r = Math.floor(Math.random()*256);
+  var b = Math.floor(Math.random()*256);
+  var g = Math.floor(Math.random()*256);
+  randomColor =  `rgb(${r}, ${b}, ${g})`;
+}
   }
 
   function renderUserList() {
